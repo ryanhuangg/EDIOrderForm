@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class start : Form
     {
-        public Form1()
+        public start()
         {
             InitializeComponent();
         }
@@ -24,13 +24,18 @@ namespace WindowsFormsApp1
 
         private void newOrder_Click(object sender, EventArgs e)
         {
-            Input order = new Input();
+            String poNum = this.Controls["PONum"].Text;
+            Input order = new Input(poNum);
+            
             order.Show();
+            
         }
 
         private void exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        
     }
 }

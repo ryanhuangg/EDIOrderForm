@@ -11,15 +11,20 @@ using System.Windows.Forms;
 using System.Xml;
 
 
+
 namespace WindowsFormsApp1
 {
     public partial class Input : Form
     {
         public int tabNum = 1;
-        public Input()
+        public String poNum = "";
+        public Input(String s)
         {
             InitializeComponent();
             PODate.Text = DateTime.Now.ToString("MMMM dd, yyyy");
+            POLine.Text = s + "-1";
+            poNum = s;
+            PODisplay.Text = s;
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,6 +98,8 @@ namespace WindowsFormsApp1
                         c.Text = "";
                     }
                 }
+
+                n.Controls["POLine"].Text = poNum + "-" + (tabNum).ToString();
             }
         }
 
@@ -112,14 +119,25 @@ namespace WindowsFormsApp1
         private void ExportButton_Click(object sender, EventArgs e)
         {
             this.CreateXML();
+            this.CreateSimpleXML();
             MessageBox.Show("Order has been transfered to XML File");
         }
+
 
         private void CreateXML()
         {
             Encoding encoding = Encoding.GetEncoding("ISO-8859-1");
             TextBox textBox = new TextBox();
-            XmlTextWriter xmlTextWriter = new XmlTextWriter("c:\\cardinal\\EDI_Order.xml", encoding);
+            String po;
+            if (poNum != "")
+            {
+                po = poNum;
+            }
+            else
+            {
+                po = "default_po";
+            }
+            XmlTextWriter xmlTextWriter = new XmlTextWriter("c:\\cardinal\\" + po + ".xml", encoding);
             xmlTextWriter.WriteStartDocument(true);
             xmlTextWriter.Formatting = Formatting.Indented;
             xmlTextWriter.Indentation = 2;
@@ -128,13 +146,238 @@ namespace WindowsFormsApp1
             xmlTextWriter.Close();
         }
 
+        private void CreateSimpleXML()
+        {
+            Encoding encoding = Encoding.GetEncoding("ISO-8859-1");
+            TextBox textBox = new TextBox();
+            String po;
+            if (poNum != "")
+            {
+                po = poNum;
+            }
+            else
+            {
+                po = "default_po";
+            }
+            XmlTextWriter xmlTextWriter = new XmlTextWriter("c:\\cardinal\\" + po + "_o.xml", encoding);
+            xmlTextWriter.WriteStartDocument(true);
+            xmlTextWriter.Formatting = Formatting.Indented;
+            xmlTextWriter.Indentation = 2;
+            this.createSimpleNode(xmlTextWriter);
+            xmlTextWriter.WriteEndDocument();
+            xmlTextWriter.Close();
+        }
+        
+        private void createSimpleNode(XmlTextWriter writer)
+        {
+            writer.WriteStartElement("Order");
+            writer.WriteStartElement("Items");
+            TextBox textBox = new TextBox();
+            ComboBox comboBox = new ComboBox();
+            String material = "";
+            for (int i = 0; i < inputTabs.TabCount - 1; i++)
+            {
+                if (!inputTabs.TabPages[i].Controls["L1Thick"].Text.Equals("") && !inputTabs.TabPages[i].Controls["L1Treat"].Text.Equals("") && !inputTabs.TabPages[i].Controls["L1Coat"].Text.Equals(""))
+                {
+
+                    writer.WriteStartElement("Item");
+
+                    writer.WriteStartElement("XDimension");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["baseLeg"];
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        textBox.Text = "";
+                    }
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("YDimension");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["leftLeg"];
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        textBox.Text = "";
+                    }
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Quantity");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["quantity"];
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        textBox.Text = "";
+                    }
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Material");
+                    material = getMaterial(inputTabs.TabPages[i].Controls["L1Thick"].Text, inputTabs.TabPages[i].Controls["L1Treat"].Text, inputTabs.TabPages[i].Controls["L1Coat"].Text);
+                    writer.WriteString(material);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Thickness");
+                    comboBox = (ComboBox)inputTabs.TabPages[i].Controls["L1Thick"];
+                    writer.WriteString(comboBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Treatment");
+                    comboBox = (ComboBox)inputTabs.TabPages[i].Controls["L1Treat"];
+                    writer.WriteString(comboBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Coating");
+                    comboBox = (ComboBox)inputTabs.TabPages[i].Controls["L1Coat"];
+                    writer.WriteString(comboBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("LiteNum");
+                    writer.WriteString("1");
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("POLine");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["POLine"];
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteEndElement();
+                }
+
+                if (!inputTabs.TabPages[i].Controls["L2Thick"].Text.Equals("") && !inputTabs.TabPages[i].Controls["L2Treat"].Text.Equals("") && !inputTabs.TabPages[i].Controls["L2Coat"].Text.Equals(""))
+                {
+                    writer.WriteStartElement("Item");
+
+                    writer.WriteStartElement("XDimension");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["baseLeg"];
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        textBox.Text = "";
+                    }
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("YDimension");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["leftLeg"];
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        textBox.Text = "";
+                    }
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Quantity");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["quantity"];
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        textBox.Text = "";
+                    }
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Material");
+                    material = getMaterial(inputTabs.TabPages[i].Controls["L2Thick"].Text, inputTabs.TabPages[i].Controls["L2Treat"].Text, inputTabs.TabPages[i].Controls["L2Coat"].Text);
+                    writer.WriteString(material);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Thickness");
+                    comboBox = (ComboBox)inputTabs.TabPages[i].Controls["L2Thick"];
+                    writer.WriteString(comboBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Treatment");
+                    comboBox = (ComboBox)inputTabs.TabPages[i].Controls["L2Treat"];
+                    writer.WriteString(comboBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Coating");
+                    comboBox = (ComboBox)inputTabs.TabPages[i].Controls["L2Coat"];
+                    writer.WriteString(comboBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("LiteNum");
+                    writer.WriteString("2");
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("POLine");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["POLine"];
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteEndElement();
+                }
+
+                if (!inputTabs.TabPages[i].Controls["L3Thick"].Text.Equals("") && !inputTabs.TabPages[i].Controls["L3Treat"].Text.Equals("") && !inputTabs.TabPages[i].Controls["L3Coat"].Text.Equals(""))
+                {
+                    writer.WriteStartElement("Item");
+
+                    writer.WriteStartElement("XDimension");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["baseLeg"];
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        textBox.Text = "";
+                    }
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("YDimension");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["leftLeg"];
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        textBox.Text = "";
+                    }
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Quantity");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["quantity"];
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        textBox.Text = "";
+                    }
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Material");
+                    material = getMaterial(inputTabs.TabPages[i].Controls["L3Thick"].Text, inputTabs.TabPages[i].Controls["L3Treat"].Text, inputTabs.TabPages[i].Controls["L3Coat"].Text);
+                    writer.WriteString(material);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Thickness");
+                    comboBox = (ComboBox)inputTabs.TabPages[i].Controls["L3Thick"];
+                    writer.WriteString(comboBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Treatment");
+                    comboBox = (ComboBox)inputTabs.TabPages[i].Controls["L3Treat"];
+                    writer.WriteString(comboBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("Coating");
+                    comboBox = (ComboBox)inputTabs.TabPages[i].Controls["L3Coat"];
+                    writer.WriteString(comboBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("LiteNum");
+                    writer.WriteString("3");
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("POLine");
+                    textBox = (TextBox)inputTabs.TabPages[i].Controls["POLine"];
+                    writer.WriteString(textBox.Text);
+                    writer.WriteEndElement();
+
+                    writer.WriteEndElement();
+                }
+            }
+            writer.WriteEndElement();
+            writer.WriteEndElement();
+        }
+
         private void createNode(XmlTextWriter writer)
         {
             writer.WriteStartElement("Order");
             writer.WriteStartElement("PONumber");
-            if (!string.IsNullOrEmpty(this.PONum.Text))
+            if (!string.IsNullOrEmpty(poNum))
             {
-                writer.WriteString(this.PONum.Text);
+                writer.WriteString(poNum);
             }
             writer.WriteEndElement();
             writer.WriteStartElement("PODate");
@@ -214,16 +457,6 @@ namespace WindowsFormsApp1
                 writer.WriteString(comboBox.Text);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("Lite1CoatingSurface");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite1Pattern");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite1PatternSurface");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite1ColorSurface");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite1SpecialtyGlass");
-                writer.WriteEndElement();
 
                 //lite 2
                 writer.WriteStartElement("Lite2Thickness");
@@ -251,17 +484,6 @@ namespace WindowsFormsApp1
                     comboBox.Text = "";
                 }
                 writer.WriteString(comboBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("Lite2CoatingSurface");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite2Pattern");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite2PatternSurface");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite2ColorSurface");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite2SpecialtyGlass");
                 writer.WriteEndElement();
 
                 //lite 3
@@ -292,16 +514,6 @@ namespace WindowsFormsApp1
                 writer.WriteString(comboBox.Text);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("Lite3CoatingSurface");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite3Pattern");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite3PatternSurface");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite3ColorSurface");
-                writer.WriteEndElement();
-                writer.WriteStartElement("Lite3SpecialtyGlass");
-                writer.WriteEndElement();
                 //end of glass
 
                 writer.WriteStartElement("BaseLeg");
@@ -367,18 +579,10 @@ namespace WindowsFormsApp1
                 writer.WriteString(textBox.Text);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("CapillaryTubes");
-                writer.WriteEndElement();
                 writer.WriteStartElement("GasMixture");
                 writer.WriteString("Argon");
                 writer.WriteEndElement();
-                writer.WriteStartElement("SpacerType");
-                writer.WriteEndElement();
-                writer.WriteStartElement("SpacerSizeAir1");
-                writer.WriteEndElement();
-                writer.WriteStartElement("SpacerSizeAir2");
-                writer.WriteString(" ");
-                writer.WriteEndElement();
+
 
                 writer.WriteStartElement("OpeningsWide");
                 textBox = (TextBox)inputTabs.TabPages[i].Controls["openingsWide"];
@@ -407,15 +611,6 @@ namespace WindowsFormsApp1
                 writer.WriteString(textBox.Text);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("DrawingNumber");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["drawingNum"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
                 writer.WriteStartElement("GridStyle");
                 textBox = (TextBox)inputTabs.TabPages[i].Controls["gridStyle"];
                 if (string.IsNullOrEmpty(textBox.Text))
@@ -423,15 +618,6 @@ namespace WindowsFormsApp1
                     textBox.Text = "";
                 }
                 writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("SubGridStyle");
-                writer.WriteEndElement();
-                writer.WriteStartElement("BarIntersection");
-                writer.WriteEndElement();
-                writer.WriteStartElement("PrairieVerticalOffset");
-                writer.WriteEndElement();
-                writer.WriteStartElement("PrairieHorizontalOffset");
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("MCodeVertAir1");
@@ -452,162 +638,6 @@ namespace WindowsFormsApp1
                 writer.WriteString(textBox.Text);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("MCodeVertAir2");
-                writer.WriteEndElement();
-                writer.WriteStartElement("MCodeHorizAir2");
-                writer.WriteEndElement();
-                writer.WriteStartElement("BumpOn");
-                writer.WriteEndElement();
-                writer.WriteStartElement("NumberOfBumpOns");
-                writer.WriteEndElement();
-                writer.WriteStartElement("BumpOnConfig");
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("HorizontalNotch1");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["HNotch1"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("HorizontalNotch2");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["HNotch2"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("HorizontalNotch3");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch4");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch5");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch6");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch7");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch8");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch9");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch10");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch11");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch12");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch13");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch14");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch15");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch16");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch17");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch18");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch19");
-                writer.WriteEndElement();
-                writer.WriteStartElement("HorizontalNotch20");
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("VerticalNotch1");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["VNotch1"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("VerticalNotch2");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["VNotch2"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("VerticalNotch3");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch4");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch5");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch6");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch7");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch8");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch9");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch10");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch11");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch12");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch13");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch14");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch15");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch16");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch17");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch18");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch19");
-                writer.WriteEndElement();
-                writer.WriteStartElement("VerticalNotch20");
-                writer.WriteEndElement();
-                writer.WriteStartElement("PreserveInfo");
-                writer.WriteEndElement();
-                writer.WriteStartElement("PreserveSurface");
-                writer.WriteEndElement();
-                writer.WriteStartElement("PreserveColorExterior");
-                writer.WriteEndElement();
-                writer.WriteStartElement("PreserveColorInterior");
-                writer.WriteEndElement();
-                writer.WriteStartElement("PreserveCutbackSizeExterior");
-                writer.WriteEndElement();
-                writer.WriteStartElement("PreserveCutbackSizeInterior");
-                writer.WriteEndElement();
-                writer.WriteStartElement("ScoringInfo");
-                writer.WriteEndElement();
-                writer.WriteStartElement("ScoringSurface");
-                writer.WriteEndElement();
-                writer.WriteStartElement("ScoringSizeExterior");
-                writer.WriteEndElement();
-                writer.WriteStartElement("ScoringSizeInterior");
-                writer.WriteEndElement();
-                writer.WriteStartElement("OverlayBar");
-                writer.WriteEndElement();
-                writer.WriteStartElement("ANSILogo");
-                writer.WriteEndElement();
-                writer.WriteStartElement("ANSILogoXOffset");
-                writer.WriteEndElement();
-                writer.WriteStartElement("ANSILogoYOffset");
-                writer.WriteEndElement();
-                writer.WriteStartElement("NFRCLogo");
-                writer.WriteEndElement();
-                writer.WriteStartElement("IGLogo");
-                writer.WriteEndElement();
-                writer.WriteStartElement("IGLogoXOffset");
-                writer.WriteEndElement();
-                writer.WriteStartElement("IGLogoYOffset");
-                writer.WriteEndElement();
 
                 writer.WriteStartElement("BatchSequenceNumber");
                 textBox = (TextBox)inputTabs.TabPages[i].Controls["SQNum"];
@@ -629,22 +659,7 @@ namespace WindowsFormsApp1
                 }
                 writer.WriteString(textBox.Text);
                 writer.WriteEndElement();
-                writer.WriteStartElement("PartNumber2");
-                writer.WriteEndElement();
-                writer.WriteStartElement("PartNumber3");
-                writer.WriteEndElement();
 
-                writer.WriteStartElement("CustomerPrice");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["customerPrice"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("AddOnPrice");
-                writer.WriteEndElement();
 
                 writer.WriteEndElement();
             }
@@ -655,14 +670,22 @@ namespace WindowsFormsApp1
 
         private void RemoveNum_Click(object sender, EventArgs e)
         {
-            
+            int toRemove;
             bool isNumeric = Regex.IsMatch(Controls["removeTabNum"].Text, @"^\d+$");
-            if ((Controls["removeTabNum"].Text != "") && isNumeric)
+            if (isNumeric)
             {
-                int toRemove = int.Parse(Controls["removeTabNum"].Text);
+                toRemove = int.Parse(Controls["removeTabNum"].Text);
+            }
+            else
+            {
+                toRemove = 0;
+            }
+            if ((Controls["removeTabNum"].Text != "") && isNumeric && (toRemove < inputTabs.TabCount) && (toRemove > 0))
+            {
+                
                 if (inputTabs.TabCount > 2)
                 {
-                    if (toRemove != (inputTabs.TabCount - 1))
+                    if (toRemove != (inputTabs.TabCount))
                     {
                         inputTabs.TabPages.Remove(inputTabs.TabPages[toRemove - 1]);
                     }
@@ -678,8 +701,116 @@ namespace WindowsFormsApp1
             }
             else
             {
-                MessageBox.Show("Tab # entered was empty or was not a number");
+                MessageBox.Show("Tab # entered was empty or was not a valid number");
             }
         }
+
+
+        private String getMaterial(String thick, String treat, String coat)
+        {
+            String material = "";
+            if (thick == "3")
+            {
+                if (treat == "Annealed")
+                {
+                    if (coat == "Clear")
+                    {
+                        material = "X3CA";
+                    }
+                    else if (coat == "Loe187")
+                    {
+                        material = "X3L1A";
+                    }
+                    else if (coat == "Loe180")
+                    {
+                        material = "X3L2A";
+                    }
+                }
+                else
+                {
+                    if (coat == "Clear")
+                    {
+                        material = "X3CT";
+                    }
+                    else if (coat == "Loe187")
+                    {
+                        material = "X3L1T";
+                    }
+                    else if (coat == "Loe180")
+                    {
+                        material = "X3L2T";
+                    }
+                }
+            }
+            else if (thick == "4")
+            {
+                if (treat == "Annealed")
+                {
+                    if (coat == "Clear")
+                    {
+                        material = "X4CA";
+                    }
+                    else if (coat == "Loe187")
+                    {
+                        material = "X4L1A";
+                    }
+                    else if (coat == "Loe180")
+                    {
+                        material = "X4L2A";
+                    }
+                }
+                else
+                {
+                    if (coat == "Clear")
+                    {
+                        material = "X4CT";
+                    }
+                    else if (coat == "Loe187")
+                    {
+                        material = "X4L1T";
+                    }
+                    else if (coat == "Loe180")
+                    {
+                        material = "X4L2T";
+                    }
+                }
+            }
+            else if (thick == "5")
+            {
+                if (treat == "Annealed")
+                {
+                    if (coat == "Clear")
+                    {
+                        material = "X5CA";
+                    }
+                    else if (coat == "Loe187")
+                    {
+                        material = "X5L1A";
+                    }
+                    else if (coat == "Loe180")
+                    {
+                        material = "X5L2A";
+                    }
+                }
+                else
+                {
+                    if (coat == "Clear")
+                    {
+                        material = "X5CT";
+                    }
+                    else if (coat == "Loe187")
+                    {
+                        material = "X5L1T";
+                    }
+                    else if (coat == "Loe180")
+                    {
+                        material = "X5L2T";
+                    }
+                }
+            }
+            return material;
+        }
+
+
     }
 }

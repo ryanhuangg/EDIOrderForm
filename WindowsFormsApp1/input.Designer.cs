@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Input));
-            this.PONum = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.PODate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.inputTabs = new System.Windows.Forms.TabControl();
@@ -47,10 +45,6 @@
             this.partNum1 = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.openingsHigh = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.VNotch2 = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.HNotch2 = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.MCodeHorizAir1 = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -61,14 +55,6 @@
             this.leftLeg = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.S1Leg = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.customerPrice = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.drawingNum = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.VNotch1 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.HNotch1 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.openingsWide = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -109,26 +95,12 @@
             this.exportButton = new System.Windows.Forms.Button();
             this.removeNum = new System.Windows.Forms.Button();
             this.removeTabNum = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PODisplay = new System.Windows.Forms.TextBox();
             this.inputTabs.SuspendLayout();
             this.POLine1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PONum
-            // 
-            this.PONum.Location = new System.Drawing.Point(562, 18);
-            this.PONum.Name = "PONum";
-            this.PONum.Size = new System.Drawing.Size(100, 20);
-            this.PONum.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(494, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "PO Number";
             // 
             // PODate
             // 
@@ -173,10 +145,6 @@
             this.POLine1.Controls.Add(this.partNum1);
             this.POLine1.Controls.Add(this.label32);
             this.POLine1.Controls.Add(this.openingsHigh);
-            this.POLine1.Controls.Add(this.label31);
-            this.POLine1.Controls.Add(this.VNotch2);
-            this.POLine1.Controls.Add(this.label30);
-            this.POLine1.Controls.Add(this.HNotch2);
             this.POLine1.Controls.Add(this.label29);
             this.POLine1.Controls.Add(this.MCodeHorizAir1);
             this.POLine1.Controls.Add(this.label27);
@@ -187,14 +155,6 @@
             this.POLine1.Controls.Add(this.leftLeg);
             this.POLine1.Controls.Add(this.label26);
             this.POLine1.Controls.Add(this.S1Leg);
-            this.POLine1.Controls.Add(this.label24);
-            this.POLine1.Controls.Add(this.customerPrice);
-            this.POLine1.Controls.Add(this.label23);
-            this.POLine1.Controls.Add(this.drawingNum);
-            this.POLine1.Controls.Add(this.label22);
-            this.POLine1.Controls.Add(this.VNotch1);
-            this.POLine1.Controls.Add(this.label21);
-            this.POLine1.Controls.Add(this.HNotch1);
             this.POLine1.Controls.Add(this.label20);
             this.POLine1.Controls.Add(this.openingsWide);
             this.POLine1.Controls.Add(this.label19);
@@ -277,7 +237,7 @@
             // 
             this.label35.AutoSize = true;
             this.label35.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label35.Location = new System.Drawing.Point(537, 368);
+            this.label35.Location = new System.Drawing.Point(528, 64);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(93, 13);
             this.label35.TabIndex = 63;
@@ -286,7 +246,7 @@
             // SQNum
             // 
             this.SQNum.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.SQNum.Location = new System.Drawing.Point(652, 365);
+            this.SQNum.Location = new System.Drawing.Point(643, 61);
             this.SQNum.Name = "SQNum";
             this.SQNum.Size = new System.Drawing.Size(100, 20);
             this.SQNum.TabIndex = 62;
@@ -313,7 +273,7 @@
             // 
             this.label33.AutoSize = true;
             this.label33.ForeColor = System.Drawing.Color.White;
-            this.label33.Location = new System.Drawing.Point(277, 417);
+            this.label33.Location = new System.Drawing.Point(277, 365);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(75, 13);
             this.label33.TabIndex = 59;
@@ -322,7 +282,7 @@
             // partNum1
             // 
             this.partNum1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.partNum1.Location = new System.Drawing.Point(392, 414);
+            this.partNum1.Location = new System.Drawing.Point(392, 362);
             this.partNum1.Name = "partNum1";
             this.partNum1.Size = new System.Drawing.Size(100, 20);
             this.partNum1.TabIndex = 58;
@@ -344,42 +304,6 @@
             this.openingsHigh.Name = "openingsHigh";
             this.openingsHigh.Size = new System.Drawing.Size(100, 20);
             this.openingsHigh.TabIndex = 56;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(277, 368);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(83, 13);
-            this.label31.TabIndex = 55;
-            this.label31.Text = "Vertical Notch 2";
-            // 
-            // VNotch2
-            // 
-            this.VNotch2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.VNotch2.Location = new System.Drawing.Point(392, 365);
-            this.VNotch2.Name = "VNotch2";
-            this.VNotch2.Size = new System.Drawing.Size(100, 20);
-            this.VNotch2.TabIndex = 54;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(277, 339);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(95, 13);
-            this.label30.TabIndex = 53;
-            this.label30.Text = "Horizontal Notch 2";
-            // 
-            // HNotch2
-            // 
-            this.HNotch2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.HNotch2.Location = new System.Drawing.Point(392, 336);
-            this.HNotch2.Name = "HNotch2";
-            this.HNotch2.Size = new System.Drawing.Size(100, 20);
-            this.HNotch2.TabIndex = 52;
             // 
             // label29
             // 
@@ -471,78 +395,6 @@
             this.S1Leg.Size = new System.Drawing.Size(100, 20);
             this.S1Leg.TabIndex = 42;
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(3, 417);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(78, 13);
-            this.label24.TabIndex = 41;
-            this.label24.Text = "Customer Price";
-            // 
-            // customerPrice
-            // 
-            this.customerPrice.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.customerPrice.Location = new System.Drawing.Point(118, 414);
-            this.customerPrice.Name = "customerPrice";
-            this.customerPrice.Size = new System.Drawing.Size(100, 20);
-            this.customerPrice.TabIndex = 40;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(3, 391);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(86, 13);
-            this.label23.TabIndex = 39;
-            this.label23.Text = "Drawing Number";
-            // 
-            // drawingNum
-            // 
-            this.drawingNum.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.drawingNum.Location = new System.Drawing.Point(118, 388);
-            this.drawingNum.Name = "drawingNum";
-            this.drawingNum.Size = new System.Drawing.Size(100, 20);
-            this.drawingNum.TabIndex = 38;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(3, 365);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(83, 13);
-            this.label22.TabIndex = 37;
-            this.label22.Text = "Vertical Notch 1";
-            // 
-            // VNotch1
-            // 
-            this.VNotch1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.VNotch1.Location = new System.Drawing.Point(118, 362);
-            this.VNotch1.Name = "VNotch1";
-            this.VNotch1.Size = new System.Drawing.Size(100, 20);
-            this.VNotch1.TabIndex = 36;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(3, 339);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(95, 13);
-            this.label21.TabIndex = 35;
-            this.label21.Text = "Horizontal Notch 1";
-            // 
-            // HNotch1
-            // 
-            this.HNotch1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.HNotch1.Location = new System.Drawing.Point(118, 336);
-            this.HNotch1.Name = "HNotch1";
-            this.HNotch1.Size = new System.Drawing.Size(100, 20);
-            this.HNotch1.TabIndex = 34;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -603,10 +455,9 @@
             this.L3Coat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.L3Coat.FormattingEnabled = true;
             this.L3Coat.Items.AddRange(new object[] {
-            "CL",
-            "E180",
-            "Q180",
-            "E272"});
+            "Clear",
+            "Loe187",
+            "Loe180"});
             this.L3Coat.Location = new System.Drawing.Point(631, 150);
             this.L3Coat.Name = "L3Coat";
             this.L3Coat.Size = new System.Drawing.Size(121, 21);
@@ -652,11 +503,10 @@
             this.L3Thick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.L3Thick.FormattingEnabled = true;
             this.L3Thick.Items.AddRange(new object[] {
-            "2.2",
-            "3.1",
-            "3.9",
-            "4.7",
-            "5.7"});
+            "3",
+            "4",
+            "5",
+            "6"});
             this.L3Thick.Location = new System.Drawing.Point(631, 96);
             this.L3Thick.Name = "L3Thick";
             this.L3Thick.Size = new System.Drawing.Size(121, 21);
@@ -678,10 +528,9 @@
             this.L2Coat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.L2Coat.FormattingEnabled = true;
             this.L2Coat.Items.AddRange(new object[] {
-            "CL",
-            "E180",
-            "Q180",
-            "E272"});
+            "Clear",
+            "Loe187",
+            "Loe180"});
             this.L2Coat.Location = new System.Drawing.Point(381, 150);
             this.L2Coat.Name = "L2Coat";
             this.L2Coat.Size = new System.Drawing.Size(121, 21);
@@ -727,11 +576,10 @@
             this.L2Thick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.L2Thick.FormattingEnabled = true;
             this.L2Thick.Items.AddRange(new object[] {
-            "2.2",
-            "3.1",
-            "3.9",
-            "4.7",
-            "5.7"});
+            "3",
+            "4",
+            "5",
+            "6"});
             this.L2Thick.Location = new System.Drawing.Point(381, 96);
             this.L2Thick.Name = "L2Thick";
             this.L2Thick.Size = new System.Drawing.Size(121, 21);
@@ -807,10 +655,9 @@
             this.L1Coat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.L1Coat.FormattingEnabled = true;
             this.L1Coat.Items.AddRange(new object[] {
-            "CL",
-            "E180",
-            "Q180",
-            "E272"});
+            "Clear",
+            "Loe187",
+            "Loe180"});
             this.L1Coat.Location = new System.Drawing.Point(112, 150);
             this.L1Coat.Name = "L1Coat";
             this.L1Coat.Size = new System.Drawing.Size(121, 21);
@@ -856,11 +703,10 @@
             this.L1Thick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.L1Thick.FormattingEnabled = true;
             this.L1Thick.Items.AddRange(new object[] {
-            "2.2",
-            "3.1",
-            "3.9",
-            "4.7",
-            "5.7"});
+            "3",
+            "4",
+            "5",
+            "6"});
             this.L1Thick.Location = new System.Drawing.Point(112, 96);
             this.L1Thick.Name = "L1Thick";
             this.L1Thick.Size = new System.Drawing.Size(121, 21);
@@ -971,12 +817,31 @@
             this.removeTabNum.Size = new System.Drawing.Size(43, 20);
             this.removeTabNum.TabIndex = 32;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(504, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "PO Number";
+            // 
+            // PODisplay
+            // 
+            this.PODisplay.Location = new System.Drawing.Point(572, 17);
+            this.PODisplay.Name = "PODisplay";
+            this.PODisplay.ReadOnly = true;
+            this.PODisplay.Size = new System.Drawing.Size(100, 20);
+            this.PODisplay.TabIndex = 35;
+            // 
             // Input
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1193, 615);
+            this.Controls.Add(this.PODisplay);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.removeTabNum);
             this.Controls.Add(this.removeNum);
             this.Controls.Add(this.exportButton);
@@ -985,8 +850,6 @@
             this.Controls.Add(this.remove);
             this.Controls.Add(this.inputTabs);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.PONum);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Input";
             this.Text = "Input";
@@ -1000,9 +863,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox PONum;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox PODate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabControl inputTabs;
@@ -1037,14 +897,6 @@
         private System.Windows.Forms.ComboBox L2Thick;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button remove;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox customerPrice;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox drawingNum;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox VNotch1;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox HNotch1;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox openingsWide;
         private System.Windows.Forms.Label label19;
@@ -1059,10 +911,6 @@
         private System.Windows.Forms.TextBox partNum1;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.TextBox openingsHigh;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox VNotch2;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox HNotch2;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox MCodeHorizAir1;
         private System.Windows.Forms.Label label27;
@@ -1081,5 +929,7 @@
         private System.Windows.Forms.Button exportButton;
         private System.Windows.Forms.Button removeNum;
         private System.Windows.Forms.TextBox removeTabNum;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox PODisplay;
     }
 }

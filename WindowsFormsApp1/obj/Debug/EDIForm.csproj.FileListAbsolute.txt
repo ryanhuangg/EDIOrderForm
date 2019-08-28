@@ -33,13 +33,14 @@ C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\b
 C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.application
 C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
 C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
-C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\EDIForm.csprojAssemblyReference.cache
+C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\EDIForm.csproj.ResolveComReference.cache
+C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.start.resources
 C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Input.resources
 C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
-C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\EDIForm.csproj.GenerateResource.Cache
+C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\EDIForm.csproj.GenerateResource.cache
 C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\EDIForm.csproj.CoreCompileInputs.cache
 C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe.manifest
 C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.application
 C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
-C:\Users\compl\source\repos\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\EDIForm.csprojAssemblyReference.cache
