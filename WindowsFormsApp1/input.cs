@@ -25,6 +25,7 @@ namespace WindowsFormsApp1
             POLine.Text = s + "-1";
             poNum = s;
             PODisplay.Text = s;
+
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,6 +64,7 @@ namespace WindowsFormsApp1
 
                     Control ccc = (Control)Activator.CreateInstance(type);
 
+
                     if (type.ToString() == "System.Windows.Forms.ComboBox")
                     {
                         ComboBox cb = new ComboBox();
@@ -75,6 +77,7 @@ namespace WindowsFormsApp1
                         cb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
                         ccc = cb;
                     }
+                    
 
                     ccc.Name = cc[j].Name;
 
@@ -85,7 +88,13 @@ namespace WindowsFormsApp1
                     ccc.BackColor = cc[j].BackColor;
 
                     ccc.ForeColor = cc[j].ForeColor;
-                    
+
+                    ccc.Width = cc[j].Width;
+
+                    if (ccc.Name == "shipDate")
+                    {
+                        ccc.Text = cc[j].Text;
+                    }
 
                     n.Controls.Add(ccc);
 
@@ -93,15 +102,23 @@ namespace WindowsFormsApp1
                 
                 foreach (Control c in inputTabs.TabPages[lastIndex].Controls)
                 {
-                    if (c.GetType().ToString() != "System.Windows.Forms.Label")
+                    if (c.GetType().ToString() != "System.Windows.Forms.Label" && c.Name != "shipDate")
                     {
                         c.Text = "";
                     }
+                    
+
                 }
 
                 n.Controls["POLine"].Text = poNum + "-" + (tabNum).ToString();
+
+                
             }
         }
+
+
+
+
 
         private void Remove_Click(object sender, EventArgs e)
         {
@@ -516,7 +533,7 @@ namespace WindowsFormsApp1
 
                 //end of glass
 
-                writer.WriteStartElement("BaseLeg");
+                writer.WriteStartElement("Width");
                 textBox = (TextBox)inputTabs.TabPages[i].Controls["baseLeg"];
                 if (string.IsNullOrEmpty(textBox.Text))
                 {
@@ -525,7 +542,7 @@ namespace WindowsFormsApp1
                 writer.WriteString(textBox.Text);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("LeftLeg");
+                writer.WriteStartElement("Height");
                 textBox = (TextBox)inputTabs.TabPages[i].Controls["leftLeg"];
                 if (string.IsNullOrEmpty(textBox.Text))
                 {
@@ -534,41 +551,7 @@ namespace WindowsFormsApp1
                 writer.WriteString(textBox.Text);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("RightLeg");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["RightLeg"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("TopLeg");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["TopLeg"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("S1Leg");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["S1Leg"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("S2Leg");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["S2Leg"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
+                
 
                 writer.WriteStartElement("ShapeNumber");
                 textBox = (TextBox)inputTabs.TabPages[i].Controls["shapeNum"];

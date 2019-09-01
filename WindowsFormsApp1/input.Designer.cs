@@ -47,14 +47,8 @@
             this.openingsHigh = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.MCodeHorizAir1 = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.rightLeg = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.S2Leg = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.leftLeg = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.S1Leg = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.openingsWide = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -77,8 +71,6 @@
             this.shapeNum = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.baseLeg = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.topLeg = new System.Windows.Forms.TextBox();
             this.L1Coat = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.L1Treat = new System.Windows.Forms.ComboBox();
@@ -86,7 +78,6 @@
             this.L1Thick = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.shipDate = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.POLine = new System.Windows.Forms.TextBox();
             this.addTab = new System.Windows.Forms.TabPage();
@@ -97,6 +88,7 @@
             this.removeTabNum = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.PODisplay = new System.Windows.Forms.TextBox();
+            this.shipDate = new System.Windows.Forms.TextBox();
             this.inputTabs.SuspendLayout();
             this.POLine1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -133,6 +125,7 @@
             // POLine1
             // 
             this.POLine1.BackColor = System.Drawing.Color.SlateGray;
+            this.POLine1.Controls.Add(this.shipDate);
             this.POLine1.Controls.Add(this.label37);
             this.POLine1.Controls.Add(this.quantity);
             this.POLine1.Controls.Add(this.label36);
@@ -147,14 +140,8 @@
             this.POLine1.Controls.Add(this.openingsHigh);
             this.POLine1.Controls.Add(this.label29);
             this.POLine1.Controls.Add(this.MCodeHorizAir1);
-            this.POLine1.Controls.Add(this.label27);
-            this.POLine1.Controls.Add(this.rightLeg);
-            this.POLine1.Controls.Add(this.label28);
-            this.POLine1.Controls.Add(this.S2Leg);
             this.POLine1.Controls.Add(this.label25);
             this.POLine1.Controls.Add(this.leftLeg);
-            this.POLine1.Controls.Add(this.label26);
-            this.POLine1.Controls.Add(this.S1Leg);
             this.POLine1.Controls.Add(this.label20);
             this.POLine1.Controls.Add(this.openingsWide);
             this.POLine1.Controls.Add(this.label19);
@@ -177,8 +164,6 @@
             this.POLine1.Controls.Add(this.shapeNum);
             this.POLine1.Controls.Add(this.label10);
             this.POLine1.Controls.Add(this.baseLeg);
-            this.POLine1.Controls.Add(this.label9);
-            this.POLine1.Controls.Add(this.topLeg);
             this.POLine1.Controls.Add(this.L1Coat);
             this.POLine1.Controls.Add(this.label8);
             this.POLine1.Controls.Add(this.L1Treat);
@@ -186,7 +171,6 @@
             this.POLine1.Controls.Add(this.L1Thick);
             this.POLine1.Controls.Add(this.label6);
             this.POLine1.Controls.Add(this.label5);
-            this.POLine1.Controls.Add(this.shipDate);
             this.POLine1.Controls.Add(this.label3);
             this.POLine1.Controls.Add(this.POLine);
             this.POLine1.Location = new System.Drawing.Point(4, 22);
@@ -219,11 +203,11 @@
             // 
             this.label36.AutoSize = true;
             this.label36.ForeColor = System.Drawing.Color.White;
-            this.label36.Location = new System.Drawing.Point(277, 25);
+            this.label36.Location = new System.Drawing.Point(260, 25);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(92, 13);
+            this.label36.Size = new System.Drawing.Size(117, 13);
             this.label36.TabIndex = 65;
-            this.label36.Text = "Overall Thickness";
+            this.label36.Text = "Overall Thickness (mm)";
             // 
             // overallThick
             // 
@@ -323,77 +307,23 @@
             this.MCodeHorizAir1.Size = new System.Drawing.Size(100, 20);
             this.MCodeHorizAir1.TabIndex = 50;
             // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label27.Location = new System.Drawing.Point(544, 209);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(53, 13);
-            this.label27.TabIndex = 49;
-            this.label27.Text = "Right Leg";
-            // 
-            // rightLeg
-            // 
-            this.rightLeg.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.rightLeg.Location = new System.Drawing.Point(652, 206);
-            this.rightLeg.Name = "rightLeg";
-            this.rightLeg.Size = new System.Drawing.Size(100, 20);
-            this.rightLeg.TabIndex = 48;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label28.Location = new System.Drawing.Point(544, 235);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(41, 13);
-            this.label28.TabIndex = 47;
-            this.label28.Text = "S2 Leg";
-            // 
-            // S2Leg
-            // 
-            this.S2Leg.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.S2Leg.Location = new System.Drawing.Point(652, 232);
-            this.S2Leg.Name = "S2Leg";
-            this.S2Leg.Size = new System.Drawing.Size(100, 20);
-            this.S2Leg.TabIndex = 46;
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(284, 209);
+            this.label25.Location = new System.Drawing.Point(284, 223);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(46, 13);
+            this.label25.Size = new System.Drawing.Size(38, 13);
             this.label25.TabIndex = 45;
-            this.label25.Text = "Left Leg";
+            this.label25.Text = "Height";
             // 
             // leftLeg
             // 
             this.leftLeg.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.leftLeg.Location = new System.Drawing.Point(392, 206);
+            this.leftLeg.Location = new System.Drawing.Point(392, 220);
             this.leftLeg.Name = "leftLeg";
             this.leftLeg.Size = new System.Drawing.Size(100, 20);
             this.leftLeg.TabIndex = 44;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(284, 235);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(41, 13);
-            this.label26.TabIndex = 43;
-            this.label26.Text = "S1 Leg";
-            // 
-            // S1Leg
-            // 
-            this.S1Leg.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.S1Leg.Location = new System.Drawing.Point(392, 232);
-            this.S1Leg.Name = "S1Leg";
-            this.S1Leg.Size = new System.Drawing.Size(100, 20);
-            this.S1Leg.TabIndex = 42;
             // 
             // label20
             // 
@@ -479,8 +409,8 @@
             this.L3Treat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.L3Treat.FormattingEnabled = true;
             this.L3Treat.Items.AddRange(new object[] {
-            "Tempered",
             "Annealed",
+            "Tempered",
             "Heat Actived"});
             this.L3Treat.Location = new System.Drawing.Point(631, 123);
             this.L3Treat.Name = "L3Treat";
@@ -552,8 +482,8 @@
             this.L2Treat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.L2Treat.FormattingEnabled = true;
             this.L2Treat.Items.AddRange(new object[] {
-            "Tempered",
             "Annealed",
+            "Tempered",
             "Heat Actived"});
             this.L2Treat.Location = new System.Drawing.Point(381, 123);
             this.L2Treat.Name = "L2Treat";
@@ -617,37 +547,19 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(10, 209);
+            this.label10.Location = new System.Drawing.Point(284, 197);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.Size = new System.Drawing.Size(35, 13);
             this.label10.TabIndex = 13;
-            this.label10.Text = "Base Leg";
+            this.label10.Text = "Width";
             // 
             // baseLeg
             // 
             this.baseLeg.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.baseLeg.Location = new System.Drawing.Point(118, 206);
+            this.baseLeg.Location = new System.Drawing.Point(392, 194);
             this.baseLeg.Name = "baseLeg";
             this.baseLeg.Size = new System.Drawing.Size(100, 20);
             this.baseLeg.TabIndex = 12;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(10, 235);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 13);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Top Leg";
-            // 
-            // topLeg
-            // 
-            this.topLeg.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.topLeg.Location = new System.Drawing.Point(118, 232);
-            this.topLeg.Name = "topLeg";
-            this.topLeg.Size = new System.Drawing.Size(100, 20);
-            this.topLeg.TabIndex = 10;
             // 
             // L1Coat
             // 
@@ -679,8 +591,8 @@
             this.L1Treat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.L1Treat.FormattingEnabled = true;
             this.L1Treat.Items.AddRange(new object[] {
-            "Tempered",
             "Annealed",
+            "Tempered",
             "Heat Actived"});
             this.L1Treat.Location = new System.Drawing.Point(112, 123);
             this.L1Treat.Name = "L1Treat";
@@ -732,14 +644,6 @@
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 3;
             this.label5.Text = "Ship Date";
-            // 
-            // shipDate
-            // 
-            this.shipDate.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.shipDate.Location = new System.Drawing.Point(118, 61);
-            this.shipDate.Name = "shipDate";
-            this.shipDate.Size = new System.Drawing.Size(100, 20);
-            this.shipDate.TabIndex = 2;
             // 
             // label3
             // 
@@ -834,6 +738,14 @@
             this.PODisplay.Size = new System.Drawing.Size(100, 20);
             this.PODisplay.TabIndex = 35;
             // 
+            // shipDate
+            // 
+            this.shipDate.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.shipDate.Location = new System.Drawing.Point(118, 61);
+            this.shipDate.Name = "shipDate";
+            this.shipDate.Size = new System.Drawing.Size(100, 20);
+            this.shipDate.TabIndex = 68;
+            // 
             // Input
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -873,7 +785,6 @@
         private System.Windows.Forms.ComboBox L1Thick;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox shipDate;
         private System.Windows.Forms.ComboBox L1Coat;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox L1Treat;
@@ -882,8 +793,6 @@
         private System.Windows.Forms.TextBox shapeNum;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox baseLeg;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox topLeg;
         private System.Windows.Forms.ComboBox L3Coat;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox L3Treat;
@@ -913,14 +822,8 @@
         private System.Windows.Forms.TextBox openingsHigh;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox MCodeHorizAir1;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox rightLeg;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox S2Leg;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox leftLeg;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox S1Leg;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox quantity;
         private System.Windows.Forms.Label label36;
@@ -931,5 +834,6 @@
         private System.Windows.Forms.TextBox removeTabNum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox PODisplay;
+        private System.Windows.Forms.TextBox shipDate;
     }
 }
