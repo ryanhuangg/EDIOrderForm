@@ -26,15 +26,24 @@ namespace WindowsFormsApp1
         private void newOrder_Click(object sender, EventArgs e)
         {
             String poNum = this.Controls["PONum"].Text;
-            if (Directory.Exists("C:\\cardinal"))
+            if (poNum != "")
             {
-                Input order = new Input(poNum);
-                order.Show();
+                if (Directory.Exists("C:\\cardinal"))
+                {
+                    Input order = new Input(poNum);
+                    order.Show();
+                }
+                else
+                {
+                    MessageBox.Show("A folder with the name \"cardinal\" must be created in the C drive first.");
+                }
             }
             else
             {
-                MessageBox.Show("A folder with the name \"cardinal\" must be created in the C drive first.");
+                MessageBox.Show("Please enter a valid PO number.");
             }
+       
+
             
             
             

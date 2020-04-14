@@ -25,6 +25,15 @@ namespace WindowsFormsApp1
             POLine.Text = s + "-1";
             poNum = s;
             PODisplay.Text = s;
+            gasFill.SelectedItem = "Argon";
+            spacer.SelectedItem = "Warm edge";
+            shapeNum.Text = "0";
+            L1Treat.SelectedItem = "Annealed";
+            L2Treat.SelectedItem = "Annealed";
+            L1Coat.SelectedItem = "Clear";
+            L2Coat.SelectedItem = "Loe";
+            L1Thick.SelectedItem = "3";
+            L2Thick.SelectedItem = "3";
 
         }
 
@@ -48,6 +57,9 @@ namespace WindowsFormsApp1
                 n.Width = 1107;
                 n.Height = 465;
                 n.BackColor = POLine1.BackColor;
+                Font f = null;
+                f = this.inputTabs.TabPages[0].Controls[0].Font;
+                
 
                 this.inputTabs.TabPages.Insert(lastIndex, n);
                 this.inputTabs.SelectedIndex = lastIndex;
@@ -71,17 +83,23 @@ namespace WindowsFormsApp1
                         ComboBox b = (System.Windows.Forms.ComboBox)cc[j];
                         for (int i = 0; i < b.Items.Count; i++)
                         {
-                        
+                            
                             cb.Items.Add(b.Items[i]);
                         }
+                        cb.Font = f;
                         cb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
                         ccc = cb;
+                        
                     }
+
                     
+
 
                     ccc.Name = cc[j].Name;
 
                     ccc.Location = cc[j].Location;
+
+                    ccc.Font = f;
 
                     ccc.Text = cc[j].Text;
 
@@ -95,6 +113,55 @@ namespace WindowsFormsApp1
                     {
                         ccc.Text = cc[j].Text;
                     }
+                    if (ccc.Name == "gasFill")
+                    {
+                        ComboBox gas = (ComboBox) ccc;
+                        gas.SelectedValue = "Argon";
+                        ccc = gas;
+                    }
+                    else if (ccc.Name == "spacer")
+                    {
+                        ComboBox edge = (ComboBox)ccc;
+                        edge.SelectedValue = "Warm edge";
+                        ccc = edge;
+                    }
+                    else if (ccc.Name == "shapeNum")
+                    {
+                        TextBox a = (TextBox) ccc;
+                        a.ReadOnly = true;
+                        a.Text = "0";
+                        ccc = a;
+                        
+                    }
+                    else if (ccc.Name == "L1Treat")
+                    {
+                        ccc.Text = "Annealed";
+                    }
+                    else if (ccc.Name == "L2Treat")
+                    {
+                        ccc.Text = "Annealed";
+                    }
+                    else if (ccc.Name == "L1Coat")
+                    {
+                        ccc.Text = "Clear";
+                    }
+                    else if (ccc.Name == "L2Coat")
+                    {
+                        ccc.Text = "Loe";
+                    }
+                    else if (ccc.Name == "L1Thick")
+                    {
+                        ccc.Text = "3";
+                    }
+                    else if (ccc.Name == "L2Thick")
+                    {
+                        ccc.Text = "1";
+                    }
+
+                    
+
+
+
 
                     n.Controls.Add(ccc);
 
@@ -102,17 +169,17 @@ namespace WindowsFormsApp1
                 
                 foreach (Control c in inputTabs.TabPages[lastIndex].Controls)
                 {
-                    if (c.GetType().ToString() != "System.Windows.Forms.Label" && c.Name != "shipDate")
+                    if (c.GetType().ToString() != "System.Windows.Forms.Label" && c.Name != "shipDate" && c.Name != "gasFill" && c.Name != "spacer" && c.Name != "shapeNum" && c.Name != "L1Treat" && c.Name != "L2Treat"
+                        && c.Name != "L1Coat" && c.Name != "L2Coat" && c.Name != "L1Thick" && c.Name != "L2Thick")
                     {
                         c.Text = "";
                     }
-                    
-
                 }
 
-                n.Controls["POLine"].Text = poNum + "-" + (tabNum).ToString();
 
+                n.Controls["POLine"].Text = poNum + "-" + (tabNum).ToString();
                 
+
             }
         }
 
@@ -562,9 +629,7 @@ namespace WindowsFormsApp1
                 writer.WriteString(textBox.Text);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("GasMixture");
-                writer.WriteString("Argon");
-                writer.WriteEndElement();
+
 
 
                 writer.WriteStartElement("OpeningsWide");
@@ -585,35 +650,18 @@ namespace WindowsFormsApp1
                 writer.WriteString(textBox.Text);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("OddOpenings");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["oddOpenings"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
 
                 writer.WriteStartElement("GridStyle");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["gridStyle"];
-                if (string.IsNullOrEmpty(textBox.Text))
+                comboBox = (ComboBox)inputTabs.TabPages[i].Controls["gridStyle"];
+                if (string.IsNullOrEmpty(comboBox.Text))
                 {
-                    textBox.Text = "";
+                    comboBox.Text = "";
                 }
-                writer.WriteString(textBox.Text);
+                writer.WriteString(comboBox.Text);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("MCodeVertAir1");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["MCodeVertAir1"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("MCodeHorizAir1");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["MCodeHorizAir1"];
+                writer.WriteStartElement("MCode");
+                textBox = (TextBox)inputTabs.TabPages[i].Controls["MCode"];
                 if (string.IsNullOrEmpty(textBox.Text))
                 {
                     textBox.Text = "";
@@ -622,17 +670,6 @@ namespace WindowsFormsApp1
                 writer.WriteEndElement();
 
 
-                writer.WriteStartElement("BatchSequenceNumber");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["SQNum"];
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = "";
-                }
-                writer.WriteString(textBox.Text);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("ProductType");
-                writer.WriteEndElement();
 
                 writer.WriteStartElement("PartNumber1");
                 textBox = (TextBox)inputTabs.TabPages[i].Controls["partNum1"];
@@ -641,6 +678,24 @@ namespace WindowsFormsApp1
                     textBox.Text = "";
                 }
                 writer.WriteString(textBox.Text);
+                writer.WriteEndElement();
+
+                writer.WriteStartElement("Spacer");
+                comboBox = (ComboBox)inputTabs.TabPages[i].Controls["spacer"];
+                if (string.IsNullOrEmpty(comboBox.Text))
+                {
+                    comboBox.Text = "";
+                }
+                writer.WriteString(comboBox.Text);
+                writer.WriteEndElement();
+
+                writer.WriteStartElement("GasMixture");
+                comboBox = (ComboBox)inputTabs.TabPages[i].Controls["gasFill"];
+                if (string.IsNullOrEmpty(comboBox.Text))
+                {
+                    comboBox.Text = "";
+                }
+                writer.WriteString(comboBox.Text);
                 writer.WriteEndElement();
 
 
@@ -794,6 +849,14 @@ namespace WindowsFormsApp1
             return material;
         }
 
+        private void L3Coat_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
