@@ -70,7 +70,6 @@ C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\WindowsF
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Input.resources
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.Properties.Resources.resources
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.csproj.GenerateResource.cache
-C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.csproj.CoreCompileInputs.cache
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.exe.manifest
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.application
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.exe

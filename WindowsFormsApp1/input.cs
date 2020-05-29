@@ -34,6 +34,8 @@ namespace WindowsFormsApp1
             L2Coat.SelectedItem = "Loe";
             L1Thick.SelectedItem = "3";
             L2Thick.SelectedItem = "3";
+            shipDate.Value = DateTime.Today;
+            shipDate.Text = shipDate.Value.ToString();
 
         }
 
@@ -49,7 +51,9 @@ namespace WindowsFormsApp1
 
         private void inputTabs_MouseDown(object sender, MouseEventArgs e)
         {
+            
             var lastIndex = this.inputTabs.TabCount - 1;
+            
             if (this.inputTabs.GetTabRect(lastIndex).Contains(e.Location))
             {
                 TabPage n = new TabPage("POLine" + (tabNum + 1).ToString());
@@ -59,7 +63,50 @@ namespace WindowsFormsApp1
                 n.BackColor = POLine1.BackColor;
                 Font f = null;
                 f = this.inputTabs.TabPages[0].Controls[0].Font;
+
+
+                // TODO on desktop
+                String wid = this.inputTabs.TabPages[lastIndex - 1].Controls["baseLeg"].Text.Split(' ')[0];
+                String hei = this.inputTabs.TabPages[lastIndex - 1].Controls["leftLeg"].Text.Split(' ')[0];
+                int l1t = Int32.Parse(this.inputTabs.TabPages[lastIndex - 1].Controls["L1Thick"].Text);
+                int l2t = Int32.Parse(this.inputTabs.TabPages[lastIndex - 1].Controls["L2Thick"].Text);
+                double width = 0;
+                double height = 0;
+                if (wid != "")
+                {
+                    width = Int32.Parse(wid);
+                }
                 
+                if (hei != "") { 
+                    height = Int32.Parse(hei);
+                }
+                
+
+                if ((width * height / 144) > 40 || width >= 96 || height >= 96)
+                {
+                    if (l1t < 6 || l2t < 6)
+                    {
+                        MessageBox.Show("The glass thickness should be at least 6mm on the previous tab.");
+                    }
+                }
+                else if ((width * height / 144) > 30 || (width <= 96 && width > 92) || (height <= 96 && height > 92))
+                {
+                    if (l1t < 5 || l2t < 5)
+                    {
+                        MessageBox.Show("The glass thickness should be at least 5mm on the previous tab.");
+                    }
+                }
+                else if ((width * height / 144) > 18 || (width <= 92 && width > 70) || (height <= 92 && height > 70))
+                {
+                    if (l1t < 4 || l2t < 4)
+                    {
+                        MessageBox.Show("The glass thickness should be at least 4mm on the previous tab.");
+                    }
+                }
+
+
+
+
 
                 this.inputTabs.TabPages.Insert(lastIndex, n);
                 this.inputTabs.SelectedIndex = lastIndex;
@@ -101,7 +148,22 @@ namespace WindowsFormsApp1
 
                     ccc.Font = f;
 
-                    ccc.Text = cc[j].Text;
+                    // TODO on desktop
+                    if (ccc.Name == "shipDate")
+                    {
+                        DateTimePicker a = new DateTimePicker();
+                        a.CustomFormat = "yyyyMMdd";
+                        a.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+                        a.Value = DateTime.Today;
+                        a.Location = cc[j].Location;
+                        a.Text = DateTime.Today.ToString();
+                        a.Name = cc[j].Name;
+                        ccc = a;
+                    }
+                    else
+                    {
+                        ccc.Text = cc[j].Text;
+                    }
 
                     ccc.BackColor = cc[j].BackColor;
 
@@ -109,10 +171,7 @@ namespace WindowsFormsApp1
 
                     ccc.Width = cc[j].Width;
 
-                    if (ccc.Name == "shipDate")
-                    {
-                        ccc.Text = cc[j].Text;
-                    }
+
                     if (ccc.Name == "gasFill")
                     {
                         ComboBox gas = (ComboBox) ccc;
@@ -150,6 +209,10 @@ namespace WindowsFormsApp1
                         ccc.Text = "Loe";
                     }
                     else if (ccc.Name == "L1Thick")
+                    {
+                        ccc.Text = "3";
+                    }
+                    else if (ccc.Name == "L2Thick")
                     {
                         ccc.Text = "3";
                     }
@@ -202,14 +265,29 @@ namespace WindowsFormsApp1
 
         private void ExportButton_Click(object sender, EventArgs e)
         {
-            this.CreateXML();
-            this.CreateSimpleXML();
-            MessageBox.Show("Order has been transfered to XML File");
+            Boolean problem = false;
+            for (int i = 0; i < inputTabs.TabCount - 1; i++)
+            {
+                if (inputTabs.TabPages[i].Controls["POLine"].Text != poNum + "-" + (i + 1).ToString())
+                {
+                    problem = true;
+                }
+            }
+            if (!problem) {
+                this.CreateXML();
+                MessageBox.Show("Order has been transfered to XML File");
+            }
+            else
+            {
+                MessageBox.Show("Please resequence before exporting");
+            }
+            
         }
 
 
         private void CreateXML()
         {
+            // TODO on PC
             Encoding encoding = Encoding.GetEncoding("ISO-8859-1");
             TextBox textBox = new TextBox();
             String po;
@@ -472,6 +550,7 @@ namespace WindowsFormsApp1
             writer.WriteEndElement();
             TextBox textBox = new TextBox();
             ComboBox comboBox = new ComboBox();
+            DateTimePicker pick = new DateTimePicker();
             writer.WriteStartElement("Items");
             for (int i = 0; i < inputTabs.TabCount - 1; i++)
             {
@@ -486,12 +565,12 @@ namespace WindowsFormsApp1
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("ShipDate");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["shipDate"];
-                if (string.IsNullOrEmpty(textBox.Text))
+                pick = (DateTimePicker)inputTabs.TabPages[i].Controls["shipDate"];
+                if (string.IsNullOrEmpty(pick.Text))
                 {
-                    textBox.Text = "";
+                    pick.Text = "";
                 }
-                writer.WriteString(textBox.Text);
+                writer.WriteString(pick.Text);
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("Quantity");
@@ -504,12 +583,12 @@ namespace WindowsFormsApp1
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("OverallThickness");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["overallThick"];
-                if (string.IsNullOrEmpty(textBox.Text))
+                comboBox = (ComboBox)inputTabs.TabPages[i].Controls["overallThick"];
+                if (string.IsNullOrEmpty(comboBox.Text))
                 {
-                    textBox.Text = "";
+                    comboBox.Text = "";
                 }
-                writer.WriteString(textBox.Text);
+                writer.WriteString(comboBox.Text);
                 writer.WriteEndElement();
 
                 // lite 1
@@ -857,6 +936,16 @@ namespace WindowsFormsApp1
         private void PictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        // TODO on PC
+        private void resequence_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < inputTabs.TabCount - 1; i++)
+            {
+                this.inputTabs.TabPages[i].Controls["POLine"].Text = (i+1).ToString();
+                this.inputTabs.TabPages[i].Text = "POLine " + (i+1).ToString();
+            }
         }
     }
 }
