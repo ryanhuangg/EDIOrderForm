@@ -96,12 +96,12 @@ namespace EDIForm
             // 
             // PODate
             // 
-            this.PODate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.PODate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PODate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PODate.Location = new System.Drawing.Point(829, 18);
             this.PODate.Name = "PODate";
             this.PODate.Size = new System.Drawing.Size(100, 22);
-            this.PODate.TabIndex = 2;
+            this.PODate.TabIndex = 101;
             // 
             // label2
             // 
@@ -128,6 +128,7 @@ namespace EDIForm
             // 
             // POLine1
             // 
+            this.POLine1.AutoScroll = true;
             this.POLine1.BackColor = System.Drawing.Color.SlateGray;
             this.POLine1.Controls.Add(this.shipDate);
             this.POLine1.Controls.Add(this.gasFill);
@@ -193,7 +194,7 @@ namespace EDIForm
             this.shipDate.Location = new System.Drawing.Point(922, 22);
             this.shipDate.Name = "shipDate";
             this.shipDate.Size = new System.Drawing.Size(121, 26);
-            this.shipDate.TabIndex = 76;
+            this.shipDate.TabIndex = 3;
             // 
             // gasFill
             // 
@@ -208,7 +209,7 @@ namespace EDIForm
             this.gasFill.Location = new System.Drawing.Point(922, 113);
             this.gasFill.Name = "gasFill";
             this.gasFill.Size = new System.Drawing.Size(121, 28);
-            this.gasFill.TabIndex = 74;
+            this.gasFill.TabIndex = 9;
             // 
             // label21
             // 
@@ -237,7 +238,7 @@ namespace EDIForm
             this.spacer.Location = new System.Drawing.Point(506, 137);
             this.spacer.Name = "spacer";
             this.spacer.Size = new System.Drawing.Size(189, 28);
-            this.spacer.TabIndex = 72;
+            this.spacer.TabIndex = 8;
             // 
             // gridStyle
             // 
@@ -252,7 +253,7 @@ namespace EDIForm
             this.gridStyle.Location = new System.Drawing.Point(176, 369);
             this.gridStyle.Name = "gridStyle";
             this.gridStyle.Size = new System.Drawing.Size(121, 28);
-            this.gridStyle.TabIndex = 71;
+            this.gridStyle.TabIndex = 19;
             // 
             // label9
             // 
@@ -297,7 +298,7 @@ namespace EDIForm
             this.quantity.Location = new System.Drawing.Point(547, 87);
             this.quantity.Name = "quantity";
             this.quantity.Size = new System.Drawing.Size(100, 26);
-            this.quantity.TabIndex = 66;
+            this.quantity.TabIndex = 6;
             // 
             // label36
             // 
@@ -319,7 +320,7 @@ namespace EDIForm
             this.overallThick.Location = new System.Drawing.Point(922, 87);
             this.overallThick.Name = "overallThick";
             this.overallThick.Size = new System.Drawing.Size(100, 26);
-            this.overallThick.TabIndex = 64;
+            this.overallThick.TabIndex = 7;
             // 
             // label33
             // 
@@ -341,7 +342,7 @@ namespace EDIForm
             this.partNum1.Location = new System.Drawing.Point(547, 19);
             this.partNum1.Name = "partNum1";
             this.partNum1.Size = new System.Drawing.Size(100, 26);
-            this.partNum1.TabIndex = 58;
+            this.partNum1.TabIndex = 2;
             // 
             // label32
             // 
@@ -363,7 +364,7 @@ namespace EDIForm
             this.openingsHigh.Location = new System.Drawing.Point(547, 398);
             this.openingsHigh.Name = "openingsHigh";
             this.openingsHigh.Size = new System.Drawing.Size(100, 26);
-            this.openingsHigh.TabIndex = 56;
+            this.openingsHigh.TabIndex = 22;
             // 
             // label25
             // 
@@ -383,7 +384,7 @@ namespace EDIForm
             this.leftLeg.Location = new System.Drawing.Point(176, 113);
             this.leftLeg.Name = "leftLeg";
             this.leftLeg.Size = new System.Drawing.Size(100, 26);
-            this.leftLeg.TabIndex = 44;
+            this.leftLeg.TabIndex = 5;
             // 
             // label20
             // 
@@ -405,7 +406,7 @@ namespace EDIForm
             this.openingsWide.Location = new System.Drawing.Point(547, 372);
             this.openingsWide.Name = "openingsWide";
             this.openingsWide.Size = new System.Drawing.Size(100, 26);
-            this.openingsWide.TabIndex = 32;
+            this.openingsWide.TabIndex = 21;
             // 
             // label19
             // 
@@ -427,7 +428,7 @@ namespace EDIForm
             this.MCode.Location = new System.Drawing.Point(176, 398);
             this.MCode.Name = "MCode";
             this.MCode.Size = new System.Drawing.Size(100, 26);
-            this.MCode.TabIndex = 30;
+            this.MCode.TabIndex = 20;
             // 
             // label18
             // 
@@ -455,7 +456,7 @@ namespace EDIForm
             this.L3Coat.Location = new System.Drawing.Point(922, 247);
             this.L3Coat.Name = "L3Coat";
             this.L3Coat.Size = new System.Drawing.Size(121, 28);
-            this.L3Coat.TabIndex = 27;
+            this.L3Coat.TabIndex = 17;
             this.L3Coat.SelectedIndexChanged += new System.EventHandler(this.L3Coat_SelectedIndexChanged);
             // 
             // label15
@@ -484,7 +485,7 @@ namespace EDIForm
             this.L3Treat.Location = new System.Drawing.Point(922, 276);
             this.L3Treat.Name = "L3Treat";
             this.L3Treat.Size = new System.Drawing.Size(121, 28);
-            this.L3Treat.TabIndex = 25;
+            this.L3Treat.TabIndex = 18;
             // 
             // label16
             // 
@@ -513,7 +514,7 @@ namespace EDIForm
             this.L3Thick.Location = new System.Drawing.Point(922, 218);
             this.L3Thick.Name = "L3Thick";
             this.L3Thick.Size = new System.Drawing.Size(121, 28);
-            this.L3Thick.TabIndex = 23;
+            this.L3Thick.TabIndex = 16;
             // 
             // label17
             // 
@@ -541,7 +542,7 @@ namespace EDIForm
             this.L2Coat.Location = new System.Drawing.Point(547, 247);
             this.L2Coat.Name = "L2Coat";
             this.L2Coat.Size = new System.Drawing.Size(121, 28);
-            this.L2Coat.TabIndex = 21;
+            this.L2Coat.TabIndex = 14;
             // 
             // label12
             // 
@@ -569,7 +570,7 @@ namespace EDIForm
             this.L2Treat.Location = new System.Drawing.Point(547, 276);
             this.L2Treat.Name = "L2Treat";
             this.L2Treat.Size = new System.Drawing.Size(121, 28);
-            this.L2Treat.TabIndex = 19;
+            this.L2Treat.TabIndex = 15;
             // 
             // label13
             // 
@@ -598,7 +599,7 @@ namespace EDIForm
             this.L2Thick.Location = new System.Drawing.Point(547, 218);
             this.L2Thick.Name = "L2Thick";
             this.L2Thick.Size = new System.Drawing.Size(121, 28);
-            this.L2Thick.TabIndex = 17;
+            this.L2Thick.TabIndex = 13;
             // 
             // label14
             // 
@@ -633,7 +634,7 @@ namespace EDIForm
             this.shapeNum.Name = "shapeNum";
             this.shapeNum.ReadOnly = true;
             this.shapeNum.Size = new System.Drawing.Size(100, 26);
-            this.shapeNum.TabIndex = 14;
+            this.shapeNum.TabIndex = 23;
             // 
             // label10
             // 
@@ -653,7 +654,7 @@ namespace EDIForm
             this.baseLeg.Location = new System.Drawing.Point(176, 87);
             this.baseLeg.Name = "baseLeg";
             this.baseLeg.Size = new System.Drawing.Size(100, 26);
-            this.baseLeg.TabIndex = 12;
+            this.baseLeg.TabIndex = 4;
             // 
             // L1Coat
             // 
@@ -669,7 +670,7 @@ namespace EDIForm
             this.L1Coat.Location = new System.Drawing.Point(176, 247);
             this.L1Coat.Name = "L1Coat";
             this.L1Coat.Size = new System.Drawing.Size(121, 28);
-            this.L1Coat.TabIndex = 9;
+            this.L1Coat.TabIndex = 11;
             // 
             // label8
             // 
@@ -697,7 +698,7 @@ namespace EDIForm
             this.L1Treat.Location = new System.Drawing.Point(176, 276);
             this.L1Treat.Name = "L1Treat";
             this.L1Treat.Size = new System.Drawing.Size(121, 28);
-            this.L1Treat.TabIndex = 7;
+            this.L1Treat.TabIndex = 12;
             // 
             // label7
             // 
@@ -726,7 +727,7 @@ namespace EDIForm
             this.L1Thick.Location = new System.Drawing.Point(176, 218);
             this.L1Thick.Name = "L1Thick";
             this.L1Thick.Size = new System.Drawing.Size(121, 28);
-            this.L1Thick.TabIndex = 5;
+            this.L1Thick.TabIndex = 10;
             this.L1Thick.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // label6
@@ -771,7 +772,7 @@ namespace EDIForm
             this.POLine.Location = new System.Drawing.Point(176, 22);
             this.POLine.Name = "POLine";
             this.POLine.Size = new System.Drawing.Size(100, 26);
-            this.POLine.TabIndex = 0;
+            this.POLine.TabIndex = 1;
             // 
             // addTab
             // 
@@ -791,7 +792,7 @@ namespace EDIForm
             this.remove.Location = new System.Drawing.Point(965, 15);
             this.remove.Name = "remove";
             this.remove.Size = new System.Drawing.Size(167, 23);
-            this.remove.TabIndex = 28;
+            this.remove.TabIndex = 102;
             this.remove.Text = "Remove Last Tab";
             this.remove.UseVisualStyleBackColor = true;
             this.remove.Click += new System.EventHandler(this.Remove_Click);
@@ -802,7 +803,7 @@ namespace EDIForm
             this.exportButton.Location = new System.Drawing.Point(295, 15);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(75, 23);
-            this.exportButton.TabIndex = 30;
+            this.exportButton.TabIndex = 106;
             this.exportButton.Text = "Export";
             this.exportButton.UseVisualStyleBackColor = true;
             this.exportButton.Click += new System.EventHandler(this.ExportButton_Click);
@@ -814,7 +815,7 @@ namespace EDIForm
             this.removeNum.Location = new System.Drawing.Point(965, 44);
             this.removeNum.Name = "removeNum";
             this.removeNum.Size = new System.Drawing.Size(118, 23);
-            this.removeNum.TabIndex = 31;
+            this.removeNum.TabIndex = 103;
             this.removeNum.Text = "Remove Tab #";
             this.removeNum.UseVisualStyleBackColor = true;
             this.removeNum.Click += new System.EventHandler(this.RemoveNum_Click);
@@ -825,7 +826,7 @@ namespace EDIForm
             this.removeTabNum.Location = new System.Drawing.Point(1089, 46);
             this.removeTabNum.Name = "removeTabNum";
             this.removeTabNum.Size = new System.Drawing.Size(43, 20);
-            this.removeTabNum.TabIndex = 32;
+            this.removeTabNum.TabIndex = 104;
             // 
             // label1
             // 
@@ -846,7 +847,7 @@ namespace EDIForm
             this.PODisplay.Name = "PODisplay";
             this.PODisplay.ReadOnly = true;
             this.PODisplay.Size = new System.Drawing.Size(100, 22);
-            this.PODisplay.TabIndex = 35;
+            this.PODisplay.TabIndex = 100;
             // 
             // pictureBox1
             // 
@@ -860,11 +861,12 @@ namespace EDIForm
             // 
             // resequence
             // 
+            this.resequence.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.resequence.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resequence.Location = new System.Drawing.Point(767, 46);
             this.resequence.Name = "resequence";
             this.resequence.Size = new System.Drawing.Size(162, 23);
-            this.resequence.TabIndex = 37;
+            this.resequence.TabIndex = 105;
             this.resequence.Text = "Resequence";
             this.resequence.UseVisualStyleBackColor = true;
             this.resequence.Click += new System.EventHandler(this.resequence_Click);

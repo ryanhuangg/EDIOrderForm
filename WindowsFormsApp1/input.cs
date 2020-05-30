@@ -136,8 +136,8 @@ namespace EDIForm
                         
                     }
 
-                    
 
+                    ccc.TabIndex = cc[j].TabIndex;
 
                     ccc.Name = cc[j].Name;
 
@@ -157,6 +157,7 @@ namespace EDIForm
                         a.Text = DateTime.Today.ToString();
                         a.Name = cc[j].Name;
                         a.Font = cc[j].Font;
+                        a.TabIndex = cc[j].TabIndex;
                         ccc = a;
                     }
                     else
