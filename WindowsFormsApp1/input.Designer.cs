@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace EDIForm
 {
     partial class Input
     {
@@ -33,13 +33,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.inputTabs = new System.Windows.Forms.TabControl();
             this.POLine1 = new System.Windows.Forms.TabPage();
+            this.shipDate = new System.Windows.Forms.DateTimePicker();
             this.gasFill = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.spacer = new System.Windows.Forms.ComboBox();
             this.gridStyle = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.shipDate = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.quantity = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
@@ -88,6 +88,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PODisplay = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.resequence = new System.Windows.Forms.Button();
             this.inputTabs.SuspendLayout();
             this.POLine1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -115,7 +116,6 @@
             // 
             // inputTabs
             // 
-            this.inputTabs.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.inputTabs.Controls.Add(this.POLine1);
             this.inputTabs.Controls.Add(this.addTab);
             this.inputTabs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -129,13 +129,13 @@
             // POLine1
             // 
             this.POLine1.BackColor = System.Drawing.Color.SlateGray;
+            this.POLine1.Controls.Add(this.shipDate);
             this.POLine1.Controls.Add(this.gasFill);
             this.POLine1.Controls.Add(this.label21);
             this.POLine1.Controls.Add(this.spacer);
             this.POLine1.Controls.Add(this.gridStyle);
             this.POLine1.Controls.Add(this.label9);
             this.POLine1.Controls.Add(this.label4);
-            this.POLine1.Controls.Add(this.shipDate);
             this.POLine1.Controls.Add(this.label37);
             this.POLine1.Controls.Add(this.quantity);
             this.POLine1.Controls.Add(this.label36);
@@ -184,6 +184,17 @@
             this.POLine1.Text = "POLine 1";
             this.POLine1.Click += new System.EventHandler(this.TabPage1_Click);
             // 
+            // shipDate
+            // 
+            this.shipDate.BackColor = System.Drawing.Color.Black;
+            this.shipDate.CustomFormat = "yyyyMMdd";
+            this.shipDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.shipDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.shipDate.Location = new System.Drawing.Point(922, 22);
+            this.shipDate.Name = "shipDate";
+            this.shipDate.Size = new System.Drawing.Size(121, 26);
+            this.shipDate.TabIndex = 76;
+            // 
             // gasFill
             // 
             this.gasFill.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -219,11 +230,13 @@
             this.spacer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spacer.FormattingEnabled = true;
             this.spacer.Items.AddRange(new object[] {
-            "Aluminum",
-            "Warm edge"});
-            this.spacer.Location = new System.Drawing.Point(547, 113);
+            "Black Warm Edge",
+            "Light Grey Warm Edge",
+            "White Warm Edge",
+            "Aluminum"});
+            this.spacer.Location = new System.Drawing.Point(506, 137);
             this.spacer.Name = "spacer";
-            this.spacer.Size = new System.Drawing.Size(121, 28);
+            this.spacer.Size = new System.Drawing.Size(189, 28);
             this.spacer.TabIndex = 72;
             // 
             // gridStyle
@@ -234,8 +247,8 @@
             this.gridStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridStyle.FormattingEnabled = true;
             this.gridStyle.Items.AddRange(new object[] {
-            "Prairie",
-            "Colonial"});
+            "Colonial",
+            "Prairie"});
             this.gridStyle.Location = new System.Drawing.Point(176, 369);
             this.gridStyle.Name = "gridStyle";
             this.gridStyle.Size = new System.Drawing.Size(121, 28);
@@ -247,7 +260,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(450, 116);
+            this.label9.Location = new System.Drawing.Point(422, 140);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(60, 20);
             this.label9.TabIndex = 70;
@@ -263,16 +276,6 @@
             this.label4.Size = new System.Drawing.Size(291, 20);
             this.label4.TabIndex = 69;
             this.label4.Text = "(Width/Height must be multiples of 1/16)";
-            // 
-            // shipDate
-            // 
-            this.shipDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.shipDate.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.shipDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipDate.Location = new System.Drawing.Point(925, 19);
-            this.shipDate.Name = "shipDate";
-            this.shipDate.Size = new System.Drawing.Size(100, 26);
-            this.shipDate.TabIndex = 68;
             // 
             // label37
             // 
@@ -447,7 +450,7 @@
             this.L3Coat.FormattingEnabled = true;
             this.L3Coat.Items.AddRange(new object[] {
             "Clear",
-            "Loe",
+            "LoE",
             "Frosted"});
             this.L3Coat.Location = new System.Drawing.Point(922, 247);
             this.L3Coat.Name = "L3Coat";
@@ -533,7 +536,7 @@
             this.L2Coat.FormattingEnabled = true;
             this.L2Coat.Items.AddRange(new object[] {
             "Clear",
-            "Loe",
+            "LoE",
             "Frosted"});
             this.L2Coat.Location = new System.Drawing.Point(547, 247);
             this.L2Coat.Name = "L2Coat";
@@ -661,7 +664,7 @@
             this.L1Coat.FormattingEnabled = true;
             this.L1Coat.Items.AddRange(new object[] {
             "Clear",
-            "Loe",
+            "LoE",
             "Frosted"});
             this.L1Coat.Location = new System.Drawing.Point(176, 247);
             this.L1Coat.Name = "L1Coat";
@@ -855,12 +858,24 @@
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
             // 
+            // resequence
+            // 
+            this.resequence.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resequence.Location = new System.Drawing.Point(767, 46);
+            this.resequence.Name = "resequence";
+            this.resequence.Size = new System.Drawing.Size(162, 23);
+            this.resequence.TabIndex = 37;
+            this.resequence.Text = "Resequence";
+            this.resequence.UseVisualStyleBackColor = true;
+            this.resequence.Click += new System.EventHandler(this.resequence_Click);
+            // 
             // Input
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1193, 615);
+            this.Controls.Add(this.resequence);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.PODisplay);
             this.Controls.Add(this.label1);
@@ -936,7 +951,6 @@
         private System.Windows.Forms.TextBox removeTabNum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox PODisplay;
-        private System.Windows.Forms.TextBox shipDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox gridStyle;
@@ -944,5 +958,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox spacer;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DateTimePicker shipDate;
+        private System.Windows.Forms.Button resequence;
     }
 }

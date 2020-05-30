@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace WindowsFormsApp1
+namespace EDIForm
 {
     public partial class start : Form
     {
@@ -28,14 +28,16 @@ namespace WindowsFormsApp1
             String poNum = this.Controls["PONum"].Text;
             if (poNum != "")
             {
-                if (Directory.Exists("C:\\cardinal"))
+                if (Directory.Exists("C:\\Ultraseal"))
                 {
                     Input order = new Input(poNum);
                     order.Show();
                 }
                 else
                 {
-                    MessageBox.Show("A folder with the name \"cardinal\" must be created in the C drive first.");
+                    Directory.CreateDirectory("C:\\Ultraseal");
+                    Input order = new Input(poNum);
+                    order.Show();
                 }
             }
             else

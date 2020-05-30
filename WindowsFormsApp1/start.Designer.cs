@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace EDIForm
 {
     partial class start
     {
