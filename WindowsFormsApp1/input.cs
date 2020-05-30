@@ -276,7 +276,7 @@ namespace EDIForm
             if (!problem)
             {
                 this.CreateXML();
-                MessageBox.Show("Order has been transfered to XML File");
+                MessageBox.Show("Order has been transfered to XML File. The file is stored in C:/Ultraseal");
             }
             else
             {
