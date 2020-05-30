@@ -67,7 +67,6 @@ C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\bin\Debug\EDIForm.
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.csproj.ResolveComReference.cache
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.Properties.Resources.resources
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.csproj.GenerateResource.cache
-C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.csproj.CoreCompileInputs.cache
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.exe.manifest
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.application
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.exe

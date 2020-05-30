@@ -1,4 +1,4 @@
-﻿namespace EDIForm
+namespace EDIForm
 {
     partial class Input
     {
