@@ -89,21 +89,21 @@ namespace EDIForm
                 {
                     if (l1t < 6 || l2t < 6)
                     {
-                        MessageBox.Show("The glass thickness should be at least 6mm on the previous tab. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
+                        MessageBox.Show("The glass thickness should be at least 6mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
                     }
                 }
                 else if ((width * height / 144) > 30 || (width <= 96 && width > 92) || (height <= 96 && height > 92))
                 {
                     if (l1t < 5 || l2t < 5)
                     {
-                        MessageBox.Show("The glass thickness should be at least 5mm on the previous tab. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
+                        MessageBox.Show("The glass thickness should be at least 5mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
                     }
                 }
                 else if ((width * height / 144) > 18 || (width <= 92 && width > 70) || (height <= 92 && height > 70))
                 {
                     if (l1t < 4 || l2t < 4)
                     {
-                        MessageBox.Show("The glass thickness should be at least 4mm on the previous tab. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
+                        MessageBox.Show("The glass thickness should be at least 4mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
                     }
                 }
 
@@ -359,12 +359,12 @@ namespace EDIForm
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("OverallThickness");
-                textBox = (TextBox)inputTabs.TabPages[i].Controls["overallThick"];
-                if (string.IsNullOrEmpty(textBox.Text))
+                comboBox = (ComboBox)inputTabs.TabPages[i].Controls["overallThick"];
+                if (string.IsNullOrEmpty(comboBox.Text))
                 {
-                    textBox.Text = "";
+                    comboBox.Text = "";
                 }
-                writer.WriteString(textBox.Text);
+                writer.WriteString(comboBox.Text);
                 writer.WriteEndElement();
 
                 // lite 1
