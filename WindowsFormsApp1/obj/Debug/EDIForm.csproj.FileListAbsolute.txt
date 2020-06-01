@@ -75,4 +75,3 @@ C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\bin\Debug\EDIForm.
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.start.resources
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.Input.resources
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.csprojAssemblyReference.cache
-C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Debug\EDIForm.csproj.CoreCompileInputs.cache
