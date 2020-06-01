@@ -33,6 +33,7 @@ namespace EDIForm
             this.label2 = new System.Windows.Forms.Label();
             this.inputTabs = new System.Windows.Forms.TabControl();
             this.POLine1 = new System.Windows.Forms.TabPage();
+            this.overallThick = new System.Windows.Forms.ComboBox();
             this.shipDate = new System.Windows.Forms.DateTimePicker();
             this.gasFill = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -88,7 +89,6 @@ namespace EDIForm
             this.PODisplay = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.resequence = new System.Windows.Forms.Button();
-            this.overallThick = new System.Windows.Forms.ComboBox();
             this.inputTabs.SuspendLayout();
             this.POLine1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -96,7 +96,6 @@ namespace EDIForm
             // 
             // PODate
             // 
-            this.PODate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PODate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PODate.Location = new System.Drawing.Point(1244, 28);
             this.PODate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -106,7 +105,6 @@ namespace EDIForm
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(1146, 32);
@@ -188,6 +186,22 @@ namespace EDIForm
             this.POLine1.TabIndex = 0;
             this.POLine1.Text = "POLine 1";
             this.POLine1.Click += new System.EventHandler(this.TabPage1_Click);
+            // 
+            // overallThick
+            // 
+            this.overallThick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.overallThick.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.overallThick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.overallThick.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overallThick.FormattingEnabled = true;
+            this.overallThick.Items.AddRange(new object[] {
+            "0 7/8",
+            "1 3/8"});
+            this.overallThick.Location = new System.Drawing.Point(1383, 135);
+            this.overallThick.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.overallThick.Name = "overallThick";
+            this.overallThick.Size = new System.Drawing.Size(180, 37);
+            this.overallThick.TabIndex = 7;
             // 
             // shipDate
             // 
@@ -828,7 +842,6 @@ namespace EDIForm
             // 
             // remove
             // 
-            this.remove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.remove.Location = new System.Drawing.Point(1448, 23);
             this.remove.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -853,7 +866,6 @@ namespace EDIForm
             // 
             // removeNum
             // 
-            this.removeNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.removeNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeNum.Location = new System.Drawing.Point(1448, 68);
             this.removeNum.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -866,7 +878,6 @@ namespace EDIForm
             // 
             // removeTabNum
             // 
-            this.removeTabNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.removeTabNum.Location = new System.Drawing.Point(1634, 71);
             this.removeTabNum.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.removeTabNum.Name = "removeTabNum";
@@ -875,7 +886,6 @@ namespace EDIForm
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(732, 31);
@@ -887,7 +897,6 @@ namespace EDIForm
             // 
             // PODisplay
             // 
-            this.PODisplay.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PODisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PODisplay.Location = new System.Drawing.Point(858, 26);
             this.PODisplay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -909,7 +918,6 @@ namespace EDIForm
             // 
             // resequence
             // 
-            this.resequence.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.resequence.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resequence.Location = new System.Drawing.Point(1150, 71);
             this.resequence.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -919,22 +927,6 @@ namespace EDIForm
             this.resequence.Text = "Resequence";
             this.resequence.UseVisualStyleBackColor = true;
             this.resequence.Click += new System.EventHandler(this.resequence_Click);
-            // 
-            // overallThick
-            // 
-            this.overallThick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.overallThick.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.overallThick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.overallThick.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overallThick.FormattingEnabled = true;
-            this.overallThick.Items.AddRange(new object[] {
-            "0 7/8",
-            "1 3/8"});
-            this.overallThick.Location = new System.Drawing.Point(1383, 135);
-            this.overallThick.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.overallThick.Name = "overallThick";
-            this.overallThick.Size = new System.Drawing.Size(180, 37);
-            this.overallThick.TabIndex = 7;
             // 
             // Input
             // 

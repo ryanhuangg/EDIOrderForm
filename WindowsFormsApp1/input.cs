@@ -358,6 +358,7 @@ namespace EDIForm
                 writer.WriteString(textBox.Text);
                 writer.WriteEndElement();
 
+
                 writer.WriteStartElement("OverallThickness");
                 comboBox = (ComboBox)inputTabs.TabPages[i].Controls["overallThick"];
                 if (string.IsNullOrEmpty(comboBox.Text))
