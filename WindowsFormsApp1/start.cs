@@ -56,6 +56,9 @@ namespace EDIForm
             this.Close();
         }
 
-        
+        private void name_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/ryanhuangg");
+        }
     }
 }

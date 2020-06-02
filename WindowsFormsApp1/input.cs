@@ -54,7 +54,7 @@ namespace EDIForm
             var lastIndex = this.inputTabs.TabCount - 1;
             if (this.inputTabs.GetTabRect(lastIndex).Contains(e.Location))
             {
-                TabPage n = new TabPage("POLine" + (tabNum + 1).ToString());
+                TabPage n = new TabPage("POLine " + (tabNum + 1).ToString());
                 tabNum++;
                 n.Width = 1107;
                 n.Height = 465;

@@ -1,0 +1,15 @@
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\bin\Release\EDIForm.exe.config
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\bin\Release\EDIForm.exe.manifest
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\bin\Release\EDIForm.application
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\bin\Release\EDIForm.exe
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\bin\Release\EDIForm.pdb
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.csprojAssemblyReference.cache
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.csproj.ResolveComReference.cache
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.start.resources
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.Input.resources
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.Properties.Resources.resources
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.csproj.GenerateResource.cache
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.exe.manifest
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.application
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.exe
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.pdb
