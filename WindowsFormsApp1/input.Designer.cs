@@ -195,6 +195,8 @@ namespace EDIForm
             this.overallThick.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overallThick.FormattingEnabled = true;
             this.overallThick.Items.AddRange(new object[] {
+            "0 3/4",
+            "0 13/16",
             "0 7/8",
             "1 3/8"});
             this.overallThick.Location = new System.Drawing.Point(1383, 135);
