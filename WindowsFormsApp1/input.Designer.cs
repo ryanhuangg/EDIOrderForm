@@ -33,6 +33,8 @@ namespace EDIForm
             this.label2 = new System.Windows.Forms.Label();
             this.inputTabs = new System.Windows.Forms.TabControl();
             this.POLine1 = new System.Windows.Forms.TabPage();
+            this.paneQty = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.overallThick = new System.Windows.Forms.ComboBox();
             this.shipDate = new System.Windows.Forms.DateTimePicker();
             this.gasFill = new System.Windows.Forms.ComboBox();
@@ -131,6 +133,8 @@ namespace EDIForm
             // 
             this.POLine1.AutoScroll = true;
             this.POLine1.BackColor = System.Drawing.Color.SlateGray;
+            this.POLine1.Controls.Add(this.paneQty);
+            this.POLine1.Controls.Add(this.label22);
             this.POLine1.Controls.Add(this.overallThick);
             this.POLine1.Controls.Add(this.shipDate);
             this.POLine1.Controls.Add(this.gasFill);
@@ -186,6 +190,36 @@ namespace EDIForm
             this.POLine1.TabIndex = 0;
             this.POLine1.Text = "POLine 1";
             this.POLine1.Click += new System.EventHandler(this.TabPage1_Click);
+            // 
+            // paneQty
+            // 
+            this.paneQty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.paneQty.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.paneQty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.paneQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paneQty.FormattingEnabled = true;
+            this.paneQty.Items.AddRange(new object[] {
+            "Single Pane",
+            "Double IG",
+            "Triple IG"});
+            this.paneQty.Location = new System.Drawing.Point(1383, 96);
+            this.paneQty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.paneQty.Name = "paneQty";
+            this.paneQty.Size = new System.Drawing.Size(180, 37);
+            this.paneQty.TabIndex = 7;
+            // 
+            // label22
+            // 
+            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label22.Location = new System.Drawing.Point(1200, 99);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(162, 29);
+            this.label22.TabIndex = 75;
+            this.label22.Text = "Pane Quantity";
             // 
             // overallThick
             // 
@@ -1023,5 +1057,7 @@ namespace EDIForm
         private System.Windows.Forms.DateTimePicker shipDate;
         private System.Windows.Forms.Button resequence;
         private System.Windows.Forms.ComboBox overallThick;
+        private System.Windows.Forms.ComboBox paneQty;
+        private System.Windows.Forms.Label label22;
     }
 }

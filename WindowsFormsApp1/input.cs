@@ -66,12 +66,23 @@ namespace EDIForm
 
                 this.inputTabs.TabPages.Insert(lastIndex, n);
                 this.inputTabs.SelectedIndex = lastIndex;
+                
+
 
                 // TODO on desktop
                 String wid = this.inputTabs.TabPages[lastIndex - 1].Controls["baseLeg"].Text.Split(' ')[0];
                 String hei = this.inputTabs.TabPages[lastIndex - 1].Controls["leftLeg"].Text.Split(' ')[0];
-                int l1t = Int32.Parse(this.inputTabs.TabPages[lastIndex - 1].Controls["L1Thick"].Text);
-                int l2t = Int32.Parse(this.inputTabs.TabPages[lastIndex - 1].Controls["L2Thick"].Text);
+                int l1t = 0;
+                int l2t = 0;
+                if (!this.inputTabs.TabPages[lastIndex - 1].Controls["L1Thick"].Text.Equals(""))
+                {
+                    l1t = Int32.Parse(this.inputTabs.TabPages[lastIndex - 1].Controls["L1Thick"].Text);
+                }
+                if (!this.inputTabs.TabPages[lastIndex - 1].Controls["L2Thick"].Text.Equals(""))
+                {
+                    l2t = Int32.Parse(this.inputTabs.TabPages[lastIndex - 1].Controls["L2Thick"].Text);
+                }
+                
                 double width = 0;
                 double height = 0;
                 if (wid != "")
@@ -107,9 +118,72 @@ namespace EDIForm
                     }
                 }
 
+                Boolean empty1stPane = (this.inputTabs.TabPages[lastIndex - 1].Controls["L1Thick"].Text.Equals("") &&
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L1Coat"].Text.Equals("") &&
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L1Treat"].Text.Equals(""));
+                Boolean empty2ndPane = (this.inputTabs.TabPages[lastIndex - 1].Controls["L2Thick"].Text.Equals("") &&
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L2Coat"].Text.Equals("") &&
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L2Treat"].Text.Equals(""));
+                Boolean empty3rdPane = (this.inputTabs.TabPages[lastIndex - 1].Controls["L3Thick"].Text.Equals("") &&
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L3Coat"].Text.Equals("") &&
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L3Treat"].Text.Equals(""));
+
+                Boolean incomp1stPane = (this.inputTabs.TabPages[lastIndex - 1].Controls["L1Thick"].Text.Equals("") ||
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L1Coat"].Text.Equals("") ||
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L1Treat"].Text.Equals(""));
+                Boolean incomp2ndPane = (this.inputTabs.TabPages[lastIndex - 1].Controls["L2Thick"].Text.Equals("") ||
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L2Coat"].Text.Equals("") ||
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L2Treat"].Text.Equals(""));
+                Boolean incomp3rdPane = (this.inputTabs.TabPages[lastIndex - 1].Controls["L3Thick"].Text.Equals("") ||
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L3Coat"].Text.Equals("") ||
+                    this.inputTabs.TabPages[lastIndex - 1].Controls["L3Treat"].Text.Equals(""));
+
+                String paneCount = this.inputTabs.TabPages[lastIndex - 1].Controls["paneQty"].Text;
+
+                if (paneCount.Equals("Single Pane"))
+                {
+                    if (!empty2ndPane && !empty3rdPane)
+                    {
+                        MessageBox.Show("The 2nd and 3rd pane info should be empty on the previous tab");
+                    }
+                    else if (!empty2ndPane)
+                    {
+                        MessageBox.Show("The 2nd pane info should be empty on the previous tab");
+                    }
+                    else if (!empty3rdPane)
+                    {
+                        MessageBox.Show("The 3rd pane info should be empty on the previous tab");
+                    }
+                }
+                else if (paneCount.Equals("Double IG"))
+                {
+                    if (incomp1stPane && incomp2ndPane)
+                    {
+                        MessageBox.Show("Complete the 1st and 2nd pane info on the previous tab");
+                    }
+                    else if (incomp1stPane)
+                    {
+                        MessageBox.Show("Complete the 1st pane info on the previous tab");
+                    }
+                    else if (incomp2ndPane)
+                    {
+                        MessageBox.Show("Complete the 2nd pane info on the previous tab");
+                    }
+                    if (!empty3rdPane)
+                    {
+                        MessageBox.Show("The 3rd pane info should be empty on the previous tab");
+                    }
+                }
+                else if (paneCount.Equals("Triple IG"))
+                {
+                    if (incomp1stPane || incomp2ndPane | incomp3rdPane)
+                    {
+                        MessageBox.Show("Complete pane info for all 3 panes on the previous tab");
+                    }
+                }
 
 
-                Control.ControlCollection cc = this.inputTabs.TabPages[0].Controls;
+                    Control.ControlCollection cc = this.inputTabs.TabPages[0].Controls;
 
                 for (int j = 0; j < cc.Count; j++)
 
