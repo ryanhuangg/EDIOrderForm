@@ -154,6 +154,12 @@ namespace EDIForm
                     {
                         MessageBox.Show("The 3rd pane info should be empty on the previous tab");
                     }
+                    if (!this.inputTabs.TabPages[lastIndex - 1].Controls["overallThick"].Text.Equals("") ||
+                        !this.inputTabs.TabPages[lastIndex - 1].Controls["gasFill"].Text.Equals("") ||
+                        !this.inputTabs.TabPages[lastIndex - 1].Controls["spacer"].Text.Equals(""))
+                    {
+                        MessageBox.Show("Remove spacer, gas fill, and over thickness info on the previous tab");
+                    }
                 }
                 else if (paneCount.Equals("Double IG"))
                 {
@@ -176,10 +182,14 @@ namespace EDIForm
                 }
                 else if (paneCount.Equals("Triple IG"))
                 {
-                    if (incomp1stPane || incomp2ndPane | incomp3rdPane)
+                    if (incomp1stPane || incomp2ndPane || incomp3rdPane)
                     {
                         MessageBox.Show("Complete pane info for all 3 panes on the previous tab");
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Complete pane info on the previous tab");
                 }
 
 
