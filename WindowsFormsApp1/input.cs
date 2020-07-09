@@ -54,20 +54,7 @@ namespace EDIForm
             var lastIndex = this.inputTabs.TabCount - 1;
             if (this.inputTabs.GetTabRect(lastIndex).Contains(e.Location))
             {
-                TabPage n = new TabPage("POLine " + (tabNum + 1).ToString());
-                tabNum++;
-                n.Width = 1107;
-                n.Height = 465;
-                n.BackColor = POLine1.BackColor;
-                Font f = null;
-                f = this.inputTabs.TabPages[0].Controls[0].Font;
-                
-
-
-                this.inputTabs.TabPages.Insert(lastIndex, n);
-                this.inputTabs.SelectedIndex = lastIndex;
-                
-
+                Boolean hasErr = false;
 
                 // TODO on desktop
                 String wid = this.inputTabs.TabPages[lastIndex - 1].Controls["baseLeg"].Text.Split(' ')[0];
@@ -82,7 +69,7 @@ namespace EDIForm
                 {
                     l2t = Int32.Parse(this.inputTabs.TabPages[lastIndex - 1].Controls["L2Thick"].Text);
                 }
-                
+
                 double width = 0;
                 double height = 0;
                 if (wid != "")
@@ -101,6 +88,7 @@ namespace EDIForm
                     if (l1t < 6 || l2t < 6)
                     {
                         MessageBox.Show("The glass thickness should be at least 6mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
+                        hasErr = true;
                     }
                 }
                 else if ((width * height / 144) > 30 || (width <= 96 && width > 92) || (height <= 96 && height > 92))
@@ -108,6 +96,7 @@ namespace EDIForm
                     if (l1t < 5 || l2t < 5)
                     {
                         MessageBox.Show("The glass thickness should be at least 5mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
+                        hasErr = true;
                     }
                 }
                 else if ((width * height / 144) > 18 || (width <= 92 && width > 70) || (height <= 92 && height > 70))
@@ -115,6 +104,7 @@ namespace EDIForm
                     if (l1t < 4 || l2t < 4)
                     {
                         MessageBox.Show("The glass thickness should be at least 4mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
+                        hasErr = true;
                     }
                 }
 
@@ -138,27 +128,41 @@ namespace EDIForm
                     this.inputTabs.TabPages[lastIndex - 1].Controls["L3Coat"].Text.Equals("") ||
                     this.inputTabs.TabPages[lastIndex - 1].Controls["L3Treat"].Text.Equals(""));
 
+                String ot = this.inputTabs.TabPages[lastIndex - 1].Controls["overallThick"].Text;
+
                 String paneCount = this.inputTabs.TabPages[lastIndex - 1].Controls["paneQty"].Text;
+
+                Boolean has3info = (!this.inputTabs.TabPages[lastIndex - 1].Controls["overallThick"].Text.Equals("") &&
+                                    !this.inputTabs.TabPages[lastIndex - 1].Controls["gasFill"].Text.Equals("") &&
+                                    !this.inputTabs.TabPages[lastIndex - 1].Controls["spacer"].Text.Equals(""));
+
+                Boolean hasEssentialInfo = (!this.inputTabs.TabPages[lastIndex - 1].Controls["baseLeg"].Text.Equals("") &&
+                    !this.inputTabs.TabPages[lastIndex - 1].Controls["leftLeg"].Text.Equals("") &&
+                    !this.inputTabs.TabPages[lastIndex - 1].Controls["quantity"].Text.Equals(""));
 
                 if (paneCount.Equals("Single Pane"))
                 {
                     if (!empty2ndPane && !empty3rdPane)
                     {
                         MessageBox.Show("The 2nd and 3rd pane info should be empty on the previous tab");
+                        hasErr = true;
                     }
                     else if (!empty2ndPane)
                     {
                         MessageBox.Show("The 2nd pane info should be empty on the previous tab");
+                        hasErr = true;
                     }
                     else if (!empty3rdPane)
                     {
                         MessageBox.Show("The 3rd pane info should be empty on the previous tab");
+                        hasErr = true;
                     }
                     if (!this.inputTabs.TabPages[lastIndex - 1].Controls["overallThick"].Text.Equals("") ||
                         !this.inputTabs.TabPages[lastIndex - 1].Controls["gasFill"].Text.Equals("") ||
                         !this.inputTabs.TabPages[lastIndex - 1].Controls["spacer"].Text.Equals(""))
                     {
-                        MessageBox.Show("Remove spacer, gas fill, and over thickness info on the previous tab");
+                        MessageBox.Show("Remove spacer, gas fill, and overall thickness info on the previous tab");
+                        hasErr = true;
                     }
                 }
                 else if (paneCount.Equals("Double IG"))
@@ -166,167 +170,228 @@ namespace EDIForm
                     if (incomp1stPane && incomp2ndPane)
                     {
                         MessageBox.Show("Complete the 1st and 2nd pane info on the previous tab");
+                        hasErr = true;
                     }
                     else if (incomp1stPane)
                     {
                         MessageBox.Show("Complete the 1st pane info on the previous tab");
+                        hasErr = true;
                     }
                     else if (incomp2ndPane)
                     {
                         MessageBox.Show("Complete the 2nd pane info on the previous tab");
+                        hasErr = true;
                     }
                     if (!empty3rdPane)
                     {
                         MessageBox.Show("The 3rd pane info should be empty on the previous tab");
+                        hasErr = true;
                     }
+
+                    if (ot.Equals("1 3/8"))
+                    {
+                        MessageBox.Show("OT thickness cannot be 1 3/8 for double IG");
+                        hasErr = true;
+                    }
+                    if (!has3info)
+                    {
+                        MessageBox.Show("Fill in spacer, gas fill, and overall thickness info on the previous tab");
+                        hasErr = true;
+                    }
+                    
                 }
                 else if (paneCount.Equals("Triple IG"))
                 {
                     if (incomp1stPane || incomp2ndPane || incomp3rdPane)
                     {
                         MessageBox.Show("Complete pane info for all 3 panes on the previous tab");
+                        hasErr = true;
+                    }
+
+                    if (!(ot.Equals("1 3/8")))
+                    {
+                        MessageBox.Show("OT thickness must be 1 3/8 for triple IG");
+                        hasErr = true;
+                    }
+                    if (!has3info)
+                    {
+                        MessageBox.Show("Fill in spacer, gas fill, and overall thickness info on the previous tab");
+                        hasErr = true;
                     }
                 }
                 else
                 {
                     MessageBox.Show("Complete pane info on the previous tab");
+                    hasErr = true;
                 }
+                if (!hasEssentialInfo)
+                {
+                    
+                    MessageBox.Show("Fill in width, height, and quantity on the previous tab");
+                    hasErr = true;
+                    
+                }
+
+                if (!hasErr)
+                {
+
+
+                    TabPage n = new TabPage("POLine " + (tabNum + 1).ToString());
+                    tabNum++;
+                    n.Width = 1107;
+                    n.Height = 465;
+                    n.BackColor = POLine1.BackColor;
+                    Font f = null;
+                    f = this.inputTabs.TabPages[0].Controls[0].Font;
+
+
+
+                    this.inputTabs.TabPages.Insert(lastIndex, n);
+                    this.inputTabs.SelectedIndex = lastIndex;
+
+
+
+
 
 
                     Control.ControlCollection cc = this.inputTabs.TabPages[0].Controls;
 
-                for (int j = 0; j < cc.Count; j++)
+                    for (int j = 0; j < cc.Count; j++)
 
-                {
-
-                    Type type = cc[j].GetType();
-
-
-                    Control ccc = (Control)Activator.CreateInstance(type);
-
-
-                    if (type.ToString() == "System.Windows.Forms.ComboBox")
                     {
-                        ComboBox cb = new ComboBox();
-                        ComboBox b = (System.Windows.Forms.ComboBox)cc[j];
-                        for (int i = 0; i < b.Items.Count; i++)
+
+                        Type type = cc[j].GetType();
+
+
+                        Control ccc = (Control)Activator.CreateInstance(type);
+
+
+                        if (type.ToString() == "System.Windows.Forms.ComboBox")
                         {
-                            
-                            cb.Items.Add(b.Items[i]);
+                            ComboBox cb = new ComboBox();
+                            ComboBox b = (System.Windows.Forms.ComboBox)cc[j];
+                            for (int i = 0; i < b.Items.Count; i++)
+                            {
+
+                                cb.Items.Add(b.Items[i]);
+                            }
+                            cb.Font = f;
+                            cb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                            ccc = cb;
+
                         }
-                        cb.Font = f;
-                        cb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                        ccc = cb;
-                        
+
+
+                        ccc.TabIndex = cc[j].TabIndex;
+
+                        ccc.Name = cc[j].Name;
+
+                        ccc.Location = cc[j].Location;
+
+                        ccc.Font = f;
+
+                        ccc.Size = cc[j].Size;
+
+                        if (ccc.Name == "shipDate")
+                        {
+                            DateTimePicker a = new DateTimePicker();
+                            a.CustomFormat = "yyyyMMdd";
+                            a.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+                            a.Value = DateTime.Today;
+                            a.Location = cc[j].Location;
+                            a.Text = DateTime.Today.ToString();
+                            a.Name = cc[j].Name;
+                            a.Font = cc[j].Font;
+                            a.TabIndex = cc[j].TabIndex;
+                            ccc = a;
+                        }
+                        else
+                        {
+                            ccc.Text = cc[j].Text;
+                        }
+
+                        ccc.BackColor = cc[j].BackColor;
+
+                        ccc.ForeColor = cc[j].ForeColor;
+
+                        ccc.Width = cc[j].Width;
+
+
+                        if (ccc.Name == "gasFill")
+                        {
+                            ComboBox gas = (ComboBox)ccc;
+                            gas.SelectedValue = "Argon";
+                            ccc = gas;
+                        }
+                        else if (ccc.Name == "spacer")
+                        {
+                            ComboBox edge = (ComboBox)ccc;
+                            edge.SelectedValue = "Black Warm Edge";
+                            ccc = edge;
+                        }
+                        else if (ccc.Name == "shapeNum")
+                        {
+                            TextBox a = (TextBox)ccc;
+                            a.ReadOnly = true;
+                            a.Text = "0";
+                            ccc = a;
+
+                        }
+                        else if (ccc.Name == "L1Treat")
+                        {
+                            ccc.Text = "Annealed";
+                        }
+                        else if (ccc.Name == "L2Treat")
+                        {
+                            ccc.Text = "Annealed";
+                        }
+                        else if (ccc.Name == "L1Coat")
+                        {
+                            ccc.Text = "Clear";
+                        }
+                        else if (ccc.Name == "L2Coat")
+                        {
+                            ccc.Text = "Loe";
+                        }
+                        else if (ccc.Name == "L1Thick")
+                        {
+                            ccc.Text = "3";
+                        }
+                        else if (ccc.Name == "L2Thick")
+                        {
+                            ccc.Text = "1";
+                        }
+                        else if (ccc.Name == "overallThick")
+                        {
+                            ccc.Text = this.inputTabs.TabPages[0].Controls["overallThick"].Text;
+                        }
+
+
+
+
+
+
+                        n.Controls.Add(ccc);
+
                     }
 
-
-                    ccc.TabIndex = cc[j].TabIndex;
-
-                    ccc.Name = cc[j].Name;
-
-                    ccc.Location = cc[j].Location;
-
-                    ccc.Font = f;
-
-                    ccc.Size = cc[j].Size;
-
-                    if (ccc.Name == "shipDate")
+                    foreach (Control c in inputTabs.TabPages[lastIndex].Controls)
                     {
-                        DateTimePicker a = new DateTimePicker();
-                        a.CustomFormat = "yyyyMMdd";
-                        a.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-                        a.Value = DateTime.Today;
-                        a.Location = cc[j].Location;
-                        a.Text = DateTime.Today.ToString();
-                        a.Name = cc[j].Name;
-                        a.Font = cc[j].Font;
-                        a.TabIndex = cc[j].TabIndex;
-                        ccc = a;
-                    }
-                    else
-                    {
-                        ccc.Text = cc[j].Text;
+                        if (c.GetType().ToString() != "System.Windows.Forms.Label" && c.Name != "shipDate" && c.Name != "gasFill" && c.Name != "spacer" && c.Name != "shapeNum" && c.Name != "L1Treat" && c.Name != "L2Treat"
+                            && c.Name != "L1Coat" && c.Name != "L2Coat" && c.Name != "L1Thick" && c.Name != "L2Thick" && c.Name != "shipDate" && c.Name != "overallThick")
+                        {
+                            c.Text = "";
+                        }
                     }
 
-                    ccc.BackColor = cc[j].BackColor;
 
-                    ccc.ForeColor = cc[j].ForeColor;
-
-                    ccc.Width = cc[j].Width;
-
-
-                    if (ccc.Name == "gasFill")
-                    {
-                        ComboBox gas = (ComboBox) ccc;
-                        gas.SelectedValue = "Argon";
-                        ccc = gas;
-                    }
-                    else if (ccc.Name == "spacer")
-                    {
-                        ComboBox edge = (ComboBox)ccc;
-                        edge.SelectedValue = "Black Warm Edge";
-                        ccc = edge;
-                    }
-                    else if (ccc.Name == "shapeNum")
-                    {
-                        TextBox a = (TextBox) ccc;
-                        a.ReadOnly = true;
-                        a.Text = "0";
-                        ccc = a;
-                        
-                    }
-                    else if (ccc.Name == "L1Treat")
-                    {
-                        ccc.Text = "Annealed";
-                    }
-                    else if (ccc.Name == "L2Treat")
-                    {
-                        ccc.Text = "Annealed";
-                    }
-                    else if (ccc.Name == "L1Coat")
-                    {
-                        ccc.Text = "Clear";
-                    }
-                    else if (ccc.Name == "L2Coat")
-                    {
-                        ccc.Text = "Loe";
-                    }
-                    else if (ccc.Name == "L1Thick")
-                    {
-                        ccc.Text = "3";
-                    }
-                    else if (ccc.Name == "L2Thick")
-                    {
-                        ccc.Text = "1";
-                    }
-                    else if (ccc.Name == "overallThick")
-                    {
-                        ccc.Text = this.inputTabs.TabPages[0].Controls["overallThick"].Text;
-                    }
-
-                    
-
-
-
-
-                    n.Controls.Add(ccc);
+                    n.Controls["POLine"].Text = (tabNum).ToString();
 
                 }
-                
-                foreach (Control c in inputTabs.TabPages[lastIndex].Controls)
+                else
                 {
-                    if (c.GetType().ToString() != "System.Windows.Forms.Label" && c.Name != "shipDate" && c.Name != "gasFill" && c.Name != "spacer" && c.Name != "shapeNum" && c.Name != "L1Treat" && c.Name != "L2Treat"
-                        && c.Name != "L1Coat" && c.Name != "L2Coat" && c.Name != "L1Thick" && c.Name != "L2Thick" && c.Name != "shipDate" && c.Name != "overallThick")
-                    {
-                        c.Text = "";
-                    }
+                    this.inputTabs.SelectTab(inputTabs.TabPages[lastIndex - 1]);
                 }
-
-
-                n.Controls["POLine"].Text = (tabNum).ToString();
-                
-
             }
         }
 
