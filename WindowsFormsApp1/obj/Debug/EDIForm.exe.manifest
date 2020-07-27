@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EDIForm.exe" size="239008">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EDIForm.exe" size="238496">
       <assemblyIdentity name="EDIForm" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>CY3kvv8APcjabrJFlEdpzYpayGZxbQIR/P4fodiGG0w=</dsig:DigestValue>
+        <dsig:DigestValue>LkPndY5zHkZkY0B75lRAk9WQ0f/hNB1kxRRttOw6NPk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -144,24 +144,24 @@ namespace EDIForm
                 {
                     if (!empty2ndPane && !empty3rdPane)
                     {
-                        MessageBox.Show("The 2nd and 3rd pane info should be empty on the previous tab");
+                        MessageBox.Show("The 2nd and 3rd pane info should be empty on the previous tab (Input #14-16, #17-19).");
                         hasErr = true;
                     }
                     else if (!empty2ndPane)
                     {
-                        MessageBox.Show("The 2nd pane info should be empty on the previous tab");
+                        MessageBox.Show("The 2nd pane info should be empty on the previous tab (Input #14-16)");
                         hasErr = true;
                     }
                     else if (!empty3rdPane)
                     {
-                        MessageBox.Show("The 3rd pane info should be empty on the previous tab");
+                        MessageBox.Show("The 3rd pane info should be empty on the previous tab (Input #17-19)");
                         hasErr = true;
                     }
                     if (!this.inputTabs.TabPages[lastIndex - 1].Controls["overallThick"].Text.Equals("") ||
                         !this.inputTabs.TabPages[lastIndex - 1].Controls["gasFill"].Text.Equals("") ||
                         !this.inputTabs.TabPages[lastIndex - 1].Controls["spacer"].Text.Equals(""))
                     {
-                        MessageBox.Show("Remove spacer, gas fill, and overall thickness info on the previous tab");
+                        MessageBox.Show("Remove spacer, gas fill, and overall thickness info on the previous tab (Input #8-10)");
                         hasErr = true;
                     }
                 }
@@ -169,33 +169,33 @@ namespace EDIForm
                 {
                     if (incomp1stPane && incomp2ndPane)
                     {
-                        MessageBox.Show("Complete the 1st and 2nd pane info on the previous tab");
+                        MessageBox.Show("Complete the 1st and 2nd pane info on the previous tab (Input #11-13, #14-16)");
                         hasErr = true;
                     }
                     else if (incomp1stPane)
                     {
-                        MessageBox.Show("Complete the 1st pane info on the previous tab");
+                        MessageBox.Show("Complete the 1st pane info on the previous tab (Input #11-13)");
                         hasErr = true;
                     }
                     else if (incomp2ndPane)
                     {
-                        MessageBox.Show("Complete the 2nd pane info on the previous tab");
+                        MessageBox.Show("Complete the 2nd pane info on the previous tab (Input #14-16)");
                         hasErr = true;
                     }
                     if (!empty3rdPane)
                     {
-                        MessageBox.Show("The 3rd pane info should be empty on the previous tab");
+                        MessageBox.Show("The 3rd pane info should be empty on the previous tab (Input #17-19)");
                         hasErr = true;
                     }
 
                     if (ot.Equals("1 3/8"))
                     {
-                        MessageBox.Show("OT thickness cannot be 1 3/8 for double IG");
+                        MessageBox.Show("OT thickness cannot be 1 3/8 for double IG (Input #8)");
                         hasErr = true;
                     }
                     if (!has3info)
                     {
-                        MessageBox.Show("Fill in spacer, gas fill, and overall thickness info on the previous tab");
+                        MessageBox.Show("Fill in spacer, gas fill, and overall thickness info on the previous tab (Input #8-10)");
                         hasErr = true;
                     }
                     
@@ -204,30 +204,30 @@ namespace EDIForm
                 {
                     if (incomp1stPane || incomp2ndPane || incomp3rdPane)
                     {
-                        MessageBox.Show("Complete pane info for all 3 panes on the previous tab");
+                        MessageBox.Show("Complete pane info for all 3 panes on the previous tab (Input #11-13, #14-16, #17-19)");
                         hasErr = true;
                     }
 
-                    if (!(ot.Equals("1 3/8")))
+                    if (!(ot.Equals("1 3/8") || ot.Equals("1")))
                     {
-                        MessageBox.Show("OT thickness must be 1 3/8 for triple IG");
+                        MessageBox.Show("OT thickness must be 1 or 1 3/8 for triple IG (Input #8)");
                         hasErr = true;
                     }
                     if (!has3info)
                     {
-                        MessageBox.Show("Fill in spacer, gas fill, and overall thickness info on the previous tab");
+                        MessageBox.Show("Fill in spacer, gas fill, and overall thickness info on the previous tab (Input #8-10)");
                         hasErr = true;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Complete pane info on the previous tab");
+                    MessageBox.Show("Complete pane quantity info on the previous tab (Input #7)");
                     hasErr = true;
                 }
                 if (!hasEssentialInfo)
                 {
                     
-                    MessageBox.Show("Fill in width, height, and quantity on the previous tab");
+                    MessageBox.Show("Fill in width, height, and quantity on the previous tab (Input #4-6)");
                     hasErr = true;
                     
                 }
@@ -544,17 +544,21 @@ namespace EDIForm
                     comboBox.Text = "";
                 }
                 String writeCoat1 = "";
-                if (comboBox.Text == "Clear")
+                if (comboBox.Text.Equals("Clear"))
                 {
                     writeCoat1 = "CL";
                 }
-                else if (comboBox.Text == "LoE")
+                else if (comboBox.Text.Equals("LoE"))
                 {
                     writeCoat1 = "LoE";
                 }
-                else if (comboBox.Text == "Frosted")
+                else if (comboBox.Text.Equals("Frosted"))
                 {
                     writeCoat1 = "Pinhead";
+                }
+                else if (comboBox.Text.Equals("LoE2"))
+                {
+                    writeCoat1 = "LoE2";
                 }
                 writer.WriteString(writeCoat1);
                 writer.WriteEndElement();
@@ -600,17 +604,21 @@ namespace EDIForm
                     comboBox.Text = "";
                 }
                 String writeCoat2 = "";
-                if (comboBox.Text == "Clear")
+                if (comboBox.Text.Equals("Clear"))
                 {
                     writeCoat2 = "CL";
                 }
-                else if (comboBox.Text == "LoE")
+                else if (comboBox.Text.Equals("LoE"))
                 {
                     writeCoat2 = "LoE";
                 }
-                else if (comboBox.Text == "Frosted")
+                else if (comboBox.Text.Equals("Frosted"))
                 {
                     writeCoat2 = "Pinhead";
+                }
+                else if (comboBox.Text.Equals("LoE2"))
+                {
+                    writeCoat2 = "LoE2";
                 }
                 writer.WriteString(writeCoat2);
                 writer.WriteEndElement();
@@ -656,17 +664,21 @@ namespace EDIForm
                     comboBox.Text = "";
                 }
                 String writeCoat3 = "";
-                if (comboBox.Text == "Clear")
+                if (comboBox.Text.Equals("Clear"))
                 {
                     writeCoat3 = "CL";
                 }
-                else if (comboBox.Text == "LoE")
+                else if (comboBox.Text.Equals("LoE"))
                 {
                     writeCoat3 = "LoE";
                 }
-                else if (comboBox.Text == "Frosted")
+                else if (comboBox.Text.Equals("Frosted"))
                 {
                     writeCoat3 = "Pinhead";
+                }
+                else if (comboBox.Text.Equals("LoE2"))
+                {
+                    writeCoat3 = "LoE2";
                 }
                 writer.WriteString(writeCoat3);
                 writer.WriteEndElement();
@@ -1209,5 +1221,7 @@ namespace EDIForm
                 this.inputTabs.TabPages[i].Text = "POLine " + (i + 1).ToString();
             }
         }
+
+        
     }
 }
