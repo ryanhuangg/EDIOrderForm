@@ -13,3 +13,4 @@ C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIFor
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.application
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.exe
 C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.pdb
+C:\Users\compl\Documents\GitHub\EDIOrderForm\WindowsFormsApp1\obj\Release\EDIForm.csproj.CoreCompileInputs.cache

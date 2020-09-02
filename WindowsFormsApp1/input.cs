@@ -87,7 +87,7 @@ namespace EDIForm
                 {
                     if (l1t < 6 || l2t < 6)
                     {
-                        MessageBox.Show("The glass thickness should be at least 6mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
+                        MessageBox.Show("The glass thickness should be at least 6mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 2].Controls["POLine"].Text + ")");
                         hasErr = true;
                     }
                 }
@@ -95,7 +95,7 @@ namespace EDIForm
                 {
                     if (l1t < 5 || l2t < 5)
                     {
-                        MessageBox.Show("The glass thickness should be at least 5mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
+                        MessageBox.Show("The glass thickness should be at least 5mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 2].Controls["POLine"].Text + ")");
                         hasErr = true;
                     }
                 }
@@ -103,7 +103,7 @@ namespace EDIForm
                 {
                     if (l1t < 4 || l2t < 4)
                     {
-                        MessageBox.Show("The glass thickness should be at least 4mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 3].Controls["POLine"].Text + ")");
+                        MessageBox.Show("The glass thickness should be at least 4mm on the previous POLine. (POLine " + this.inputTabs.TabPages[this.inputTabs.TabCount - 2].Controls["POLine"].Text + ")");
                         hasErr = true;
                     }
                 }
