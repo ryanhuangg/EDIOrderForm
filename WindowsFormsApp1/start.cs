@@ -28,6 +28,7 @@ namespace EDIForm
             String poNum = this.Controls["PONum"].Text;
             if (poNum != "")
             {
+                // create folder if it doesn't exist
                 if (Directory.Exists("C:\\Ultraseal"))
                 {
                     Input order = new Input(poNum);

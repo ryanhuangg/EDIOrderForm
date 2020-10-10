@@ -20,6 +20,7 @@ namespace EDIForm
         public String poNum = "";
         public Input(String s)
         {
+            // set default values for the first input tab
             InitializeComponent();
             PODate.Text = DateTime.Now.ToString("yyyyMMdd");
             POLine.Text = "1";
@@ -49,16 +50,21 @@ namespace EDIForm
 
         }
 
+
         private void inputTabs_MouseDown(object sender, MouseEventArgs e)
         {
             var lastIndex = this.inputTabs.TabCount - 1;
+            // if a new tab is created..
             if (this.inputTabs.GetTabRect(lastIndex).Contains(e.Location))
             {
+                // error check bool
                 Boolean hasErr = false;
 
-                // TODO on desktop
+
                 String wid = this.inputTabs.TabPages[lastIndex - 1].Controls["baseLeg"].Text.Split(' ')[0];
                 String hei = this.inputTabs.TabPages[lastIndex - 1].Controls["leftLeg"].Text.Split(' ')[0];
+
+                // parse l1 and l2 thicknesses
                 int l1t = 0;
                 int l2t = 0;
                 if (!this.inputTabs.TabPages[lastIndex - 1].Controls["L1Thick"].Text.Equals(""))
@@ -70,6 +76,7 @@ namespace EDIForm
                     l2t = Int32.Parse(this.inputTabs.TabPages[lastIndex - 1].Controls["L2Thick"].Text);
                 }
 
+                // parse width/height of glass
                 double width = 0;
                 double height = 0;
                 if (wid != "")
@@ -82,7 +89,7 @@ namespace EDIForm
                     height = Int32.Parse(hei);
                 }
 
-
+                // check errors for width/height and thickness mismatch
                 if ((width * height / 144) > 40 || width >= 96 || height >= 96)
                 {
                     if (l1t < 6 || l2t < 6)
@@ -108,6 +115,7 @@ namespace EDIForm
                     }
                 }
 
+                // bools for empty pane info
                 Boolean empty1stPane = (this.inputTabs.TabPages[lastIndex - 1].Controls["L1Thick"].Text.Equals("") &&
                     this.inputTabs.TabPages[lastIndex - 1].Controls["L1Coat"].Text.Equals("") &&
                     this.inputTabs.TabPages[lastIndex - 1].Controls["L1Treat"].Text.Equals(""));
@@ -118,6 +126,7 @@ namespace EDIForm
                     this.inputTabs.TabPages[lastIndex - 1].Controls["L3Coat"].Text.Equals("") &&
                     this.inputTabs.TabPages[lastIndex - 1].Controls["L3Treat"].Text.Equals(""));
 
+                // bools for incomplete pane info
                 Boolean incomp1stPane = (this.inputTabs.TabPages[lastIndex - 1].Controls["L1Thick"].Text.Equals("") ||
                     this.inputTabs.TabPages[lastIndex - 1].Controls["L1Coat"].Text.Equals("") ||
                     this.inputTabs.TabPages[lastIndex - 1].Controls["L1Treat"].Text.Equals(""));
@@ -128,10 +137,12 @@ namespace EDIForm
                     this.inputTabs.TabPages[lastIndex - 1].Controls["L3Coat"].Text.Equals("") ||
                     this.inputTabs.TabPages[lastIndex - 1].Controls["L3Treat"].Text.Equals(""));
 
+                
                 String ot = this.inputTabs.TabPages[lastIndex - 1].Controls["overallThick"].Text;
 
                 String paneCount = this.inputTabs.TabPages[lastIndex - 1].Controls["paneQty"].Text;
 
+                // bools for filled info checks
                 Boolean has3info = (!this.inputTabs.TabPages[lastIndex - 1].Controls["overallThick"].Text.Equals("") &&
                                     !this.inputTabs.TabPages[lastIndex - 1].Controls["gasFill"].Text.Equals("") &&
                                     !this.inputTabs.TabPages[lastIndex - 1].Controls["spacer"].Text.Equals(""));
@@ -142,21 +153,25 @@ namespace EDIForm
 
                 if (paneCount.Equals("Single Pane"))
                 {
+                    // both 2/3 are filled
                     if (!empty2ndPane && !empty3rdPane)
                     {
                         MessageBox.Show("The 2nd and 3rd pane info should be empty on the previous tab (Input #14-16, #17-19).");
                         hasErr = true;
                     }
+                    // if only pane 2 is filled
                     else if (!empty2ndPane)
                     {
                         MessageBox.Show("The 2nd pane info should be empty on the previous tab (Input #14-16)");
                         hasErr = true;
                     }
+                    // if only pane 3 is filled
                     else if (!empty3rdPane)
                     {
                         MessageBox.Show("The 3rd pane info should be empty on the previous tab (Input #17-19)");
                         hasErr = true;
                     }
+                    // if any pane info isn't filled
                     if (!this.inputTabs.TabPages[lastIndex - 1].Controls["overallThick"].Text.Equals("") ||
                         !this.inputTabs.TabPages[lastIndex - 1].Controls["gasFill"].Text.Equals("") ||
                         !this.inputTabs.TabPages[lastIndex - 1].Controls["spacer"].Text.Equals(""))
@@ -187,7 +202,7 @@ namespace EDIForm
                         MessageBox.Show("The 3rd pane info should be empty on the previous tab (Input #17-19)");
                         hasErr = true;
                     }
-
+                    // check thickness validity
                     if (ot.Equals("1 3/8"))
                     {
                         MessageBox.Show("OT thickness cannot be 1 3/8 for double IG (Input #8)");
@@ -202,12 +217,13 @@ namespace EDIForm
                 }
                 else if (paneCount.Equals("Triple IG"))
                 {
+                    // check all 3 panes are completed
                     if (incomp1stPane || incomp2ndPane || incomp3rdPane)
                     {
                         MessageBox.Show("Complete pane info for all 3 panes on the previous tab (Input #11-13, #14-16, #17-19)");
                         hasErr = true;
                     }
-
+                    // check thickness
                     if (!(ot.Equals("1 3/8") || ot.Equals("1")))
                     {
                         MessageBox.Show("OT thickness must be 1 or 1 3/8 for triple IG (Input #8)");
@@ -232,10 +248,11 @@ namespace EDIForm
                     
                 }
 
+                // if no errors are found on the prev tab, proceed to the next tab
                 if (!hasErr)
                 {
 
-
+                    // setup new tab
                     TabPage n = new TabPage("POLine " + (tabNum + 1).ToString());
                     tabNum++;
                     n.Width = 1107;
@@ -245,7 +262,7 @@ namespace EDIForm
                     f = this.inputTabs.TabPages[0].Controls[0].Font;
 
 
-
+                    // insert tab
                     this.inputTabs.TabPages.Insert(lastIndex, n);
                     this.inputTabs.SelectedIndex = lastIndex;
 
@@ -253,13 +270,13 @@ namespace EDIForm
 
 
 
-
+                    // add all the controls from the previous page
                     Control.ControlCollection cc = this.inputTabs.TabPages[0].Controls;
 
                     for (int j = 0; j < cc.Count; j++)
 
                     {
-
+                        //create the controls
                         Type type = cc[j].GetType();
 
 
@@ -292,6 +309,7 @@ namespace EDIForm
 
                         ccc.Size = cc[j].Size;
 
+                        // make new DateTimePicker for shipDate
                         if (ccc.Name == "shipDate")
                         {
                             DateTimePicker a = new DateTimePicker();
@@ -316,7 +334,7 @@ namespace EDIForm
 
                         ccc.Width = cc[j].Width;
 
-
+                        // fill in default info for certain specified controls
                         if (ccc.Name == "gasFill")
                         {
                             ComboBox gas = (ComboBox)ccc;
@@ -370,13 +388,15 @@ namespace EDIForm
 
 
 
-
+                        // add controls
                         n.Controls.Add(ccc);
 
                     }
 
+                    // set text for each control that has no default value
                     foreach (Control c in inputTabs.TabPages[lastIndex].Controls)
                     {
+                    
                         if (c.GetType().ToString() != "System.Windows.Forms.Label" && c.Name != "shipDate" && c.Name != "gasFill" && c.Name != "spacer" && c.Name != "shapeNum" && c.Name != "L1Treat" && c.Name != "L2Treat"
                             && c.Name != "L1Coat" && c.Name != "L2Coat" && c.Name != "L1Thick" && c.Name != "L2Thick" && c.Name != "shipDate" && c.Name != "overallThick")
                         {
@@ -384,12 +404,13 @@ namespace EDIForm
                         }
                     }
 
-
+                    // poline number text
                     n.Controls["POLine"].Text = (tabNum).ToString();
 
                 }
                 else
                 {
+                    // return to the previous tab if errors are found
                     this.inputTabs.SelectTab(inputTabs.TabPages[lastIndex - 1]);
                 }
             }
@@ -402,6 +423,7 @@ namespace EDIForm
         private void Remove_Click(object sender, EventArgs e)
         {
             int lastIndex = inputTabs.TabCount;
+            // remove if there are more than 2 total (1 with content) tabs
             if (inputTabs.TabCount > 2)
             {
                 inputTabs.TabPages.Remove(inputTabs.TabPages[lastIndex - 2]);
@@ -417,6 +439,7 @@ namespace EDIForm
             Boolean problem = false;
             for (int i = 0; i < inputTabs.TabCount - 1; i++)
             {
+                // check poline number aligns with the tab number
                 if (inputTabs.TabPages[i].Controls["POLine"].Text != (i + 1).ToString())
                 {
                     problem = true;
@@ -447,6 +470,7 @@ namespace EDIForm
             {
                 po = "default_po";
             }
+            // write xml to C:/Ultraseal with po number
             XmlTextWriter xmlTextWriter = new XmlTextWriter("c:\\Ultraseal\\" + po + ".xml", encoding);
             xmlTextWriter.WriteStartDocument(true);
             xmlTextWriter.Formatting = Formatting.Indented;
@@ -460,6 +484,7 @@ namespace EDIForm
 
         private void createNode(XmlTextWriter writer)
         {
+            // write each element into XML file
             writer.WriteStartElement("Order");
             writer.WriteStartElement("PONumber");
             if (!string.IsNullOrEmpty(poNum))
@@ -477,6 +502,7 @@ namespace EDIForm
             ComboBox comboBox = new ComboBox();
             DateTimePicker pick = new DateTimePicker();
             writer.WriteStartElement("Items");
+            // write each order tab into the Items tree
             for (int i = 0; i < inputTabs.TabCount - 1; i++)
             {
                 writer.WriteStartElement("Item");
@@ -832,7 +858,7 @@ namespace EDIForm
                 writer.WriteString(textBox.Text);
                 writer.WriteEndElement();
 
-
+                // empty elements, may be used later
                 writer.WriteStartElement("MCodeHorizAir1");
                 writer.WriteEndElement();
 
@@ -1064,6 +1090,7 @@ namespace EDIForm
         {
             int toRemove;
             bool isNumeric = Regex.IsMatch(Controls["removeTabNum"].Text, @"^\d+$");
+            // if text entered is numeric, setup the number to remove
             if (isNumeric)
             {
                 toRemove = int.Parse(Controls["removeTabNum"].Text);
@@ -1074,9 +1101,10 @@ namespace EDIForm
             }
             if ((Controls["removeTabNum"].Text != "") && isNumeric && (toRemove < inputTabs.TabCount) && (toRemove > 0))
             {
-                
+                // check that enough tabs are there
                 if (inputTabs.TabCount > 2)
                 {
+                    // check the last tab (add tab button) isn't being removed
                     if (toRemove != (inputTabs.TabCount))
                     {
                         inputTabs.TabPages.Remove(inputTabs.TabPages[toRemove - 1]);
@@ -1097,9 +1125,10 @@ namespace EDIForm
             }
         }
 
-
+        
         private String getMaterial(String thick, String treat, String coat)
         {
+            // CURRENTLY UNUSED
             String material = "";
             if (thick == "3")
             {
@@ -1215,6 +1244,7 @@ namespace EDIForm
 
         private void resequence_Click(object sender, EventArgs e)
         {
+            // resequence tab numbers for each order (to account for removed tabs)
             for (int i = 0; i < inputTabs.TabCount - 1; i++)
             {
                 this.inputTabs.TabPages[i].Controls["POLine"].Text = (i + 1).ToString();
