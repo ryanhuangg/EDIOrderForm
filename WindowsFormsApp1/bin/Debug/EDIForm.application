@@ -4,7 +4,7 @@
   <description asmv2:publisher="EDIForm" asmv2:product="EDIForm" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
     <dependentAssembly dependencyType="install" codebase="EDIForm.exe.manifest" size="3451">
@@ -14,7 +14,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>JK6qovEcfB45n7oT5HhTctQySdDf7lXulWi0NCq7ujw=</dsig:DigestValue>
+        <dsig:DigestValue>z8lACoqtDytNmh6M/e3+0pA8daPOb7+yuBmdYnbaUhY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

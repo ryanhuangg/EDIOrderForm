@@ -110,7 +110,7 @@ namespace EDIForm
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(764, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 16);
+            this.label2.Size = new System.Drawing.Size(58, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "PO Date";
             // 
@@ -223,11 +223,7 @@ namespace EDIForm
             this.overallThick.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overallThick.FormattingEnabled = true;
             this.overallThick.Items.AddRange(new object[] {
-            "0 3/4",
-            "0 13/16",
-            "0 5/8",
             "0 7/8",
-            "1",
             "1 3/8"});
             this.overallThick.Location = new System.Drawing.Point(922, 88);
             this.overallThick.Name = "overallThick";
@@ -489,10 +485,7 @@ namespace EDIForm
             this.L3Coat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L3Coat.FormattingEnabled = true;
             this.L3Coat.Items.AddRange(new object[] {
-            "Clear",
-            "LoE",
-            "Frosted",
-            "LoE2"});
+            "LoE 272"});
             this.L3Coat.Location = new System.Drawing.Point(922, 247);
             this.L3Coat.Name = "L3Coat";
             this.L3Coat.Size = new System.Drawing.Size(121, 28);
@@ -576,10 +569,7 @@ namespace EDIForm
             this.L2Coat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L2Coat.FormattingEnabled = true;
             this.L2Coat.Items.AddRange(new object[] {
-            "Clear",
-            "LoE",
-            "Frosted",
-            "LoE2"});
+            "LoE 272"});
             this.L2Coat.Location = new System.Drawing.Point(547, 247);
             this.L2Coat.Name = "L2Coat";
             this.L2Coat.Size = new System.Drawing.Size(121, 28);
@@ -705,10 +695,7 @@ namespace EDIForm
             this.L1Coat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L1Coat.FormattingEnabled = true;
             this.L1Coat.Items.AddRange(new object[] {
-            "Clear",
-            "LoE",
-            "Frosted",
-            "LoE2"});
+            "LoE 272"});
             this.L1Coat.Location = new System.Drawing.Point(176, 247);
             this.L1Coat.Name = "L1Coat";
             this.L1Coat.Size = new System.Drawing.Size(121, 28);
@@ -873,7 +860,7 @@ namespace EDIForm
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(488, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 16);
+            this.label1.Size = new System.Drawing.Size(77, 16);
             this.label1.TabIndex = 34;
             this.label1.Text = "PO Number";
             // 

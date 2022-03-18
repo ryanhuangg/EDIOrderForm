@@ -31,8 +31,8 @@ namespace EDIForm
             shapeNum.Text = "0";
             L1Treat.SelectedItem = "Annealed";
             L2Treat.SelectedItem = "Annealed";
-            L1Coat.SelectedItem = "Clear";
-            L2Coat.SelectedItem = "LoE";
+            L1Coat.SelectedItem = "LoE 272";
+            L2Coat.SelectedItem = "LoE 272";
             L1Thick.SelectedItem = "3";
             L2Thick.SelectedItem = "3";
             shipDate.Value = DateTime.Today;
@@ -365,11 +365,11 @@ namespace EDIForm
                         }
                         else if (ccc.Name == "L1Coat")
                         {
-                            ccc.Text = "Clear";
+                            ccc.Text = "LoE 272";
                         }
                         else if (ccc.Name == "L2Coat")
                         {
-                            ccc.Text = "Loe";
+                            ccc.Text = "LoE 272";
                         }
                         else if (ccc.Name == "L1Thick")
                         {
@@ -574,9 +574,9 @@ namespace EDIForm
                 {
                     writeCoat1 = "CL";
                 }
-                else if (comboBox.Text.Equals("LoE"))
+                else if (comboBox.Text.Equals("LoE 272"))
                 {
-                    writeCoat1 = "LoE";
+                    writeCoat1 = "LoE 272";
                 }
                 else if (comboBox.Text.Equals("Frosted"))
                 {

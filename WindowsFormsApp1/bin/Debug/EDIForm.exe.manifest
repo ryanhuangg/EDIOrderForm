@@ -42,24 +42,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EDIForm.exe" size="237568">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EDIForm.exe" size="237056">
       <assemblyIdentity name="EDIForm" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0jYvuBWq/uoGx80ZxgyMNie2K6ds/pkagN3dlJhFDHw=</dsig:DigestValue>
+        <dsig:DigestValue>TCvxrVBfdjQHNK81nlxI8PmYZNQ4BKflaoxItbxBRXg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="EDIForm.exe.config" size="189">
+  <file name="EDIForm.exe.config" size="184">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rl5/qDc7Jz+tB+BIbOv9iMGPlRe6YJwrjmU09dnlPcs=</dsig:DigestValue>
+      <dsig:DigestValue>FihlZtVNgcNyH37Pf0Jtll3jZOm+L55ijXNjtoS2/mo=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

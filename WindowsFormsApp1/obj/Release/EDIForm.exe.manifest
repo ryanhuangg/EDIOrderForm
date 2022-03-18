@@ -49,17 +49,17 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>VYad2mcSKI2srucfnIFpzKL3DYFoTHd2P6IA63g0Keg=</dsig:DigestValue>
+        <dsig:DigestValue>EFnxi5hDRVfws2G6GWeiuYcmxVCiAos++xg1AZDAcyU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="EDIForm.exe.config" size="189">
+  <file name="EDIForm.exe.config" size="184">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rl5/qDc7Jz+tB+BIbOv9iMGPlRe6YJwrjmU09dnlPcs=</dsig:DigestValue>
+      <dsig:DigestValue>FihlZtVNgcNyH37Pf0Jtll3jZOm+L55ijXNjtoS2/mo=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
